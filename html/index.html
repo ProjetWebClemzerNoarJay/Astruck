@@ -4,6 +4,9 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="../css/#"/>
 	<title>Accueil Astruck</title>
+	<style type="text/css">
+		#map {width: 150px; height:150px;}
+	</style>
 </head>
 <body>
 	<header>
@@ -29,9 +32,30 @@
 
 	<section>
 		<h1>Astruck</h1>
+		
+			<!--Element map via Api de google pour generer la minicarte de position en temps réel-->
 		<nav id="bandeau">
-
-		</nav>
+			<h2>Position en temps réel</h2>
+			<div id="map" width="150" height="150"></div>
+			<script>
+				function initMap() 
+				{
+				    var uluru = {lat: 48.049518, lng: -1.743215};
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 10,
+						center: uluru
+					});
+					var marker = new google.maps.Marker({
+					    position: uluru,
+					    map: map
+					});
+				}
+			</script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o&callback=initMap">
+			</script>
+			</nav>
+			
+		
 		<article id="presentations">
 			<video src="../video/#" controls autoload width="800" height="400">Merci de mettre votre navigateur à jour</video>
 			<h2>Qui sommes nous ?</h2>

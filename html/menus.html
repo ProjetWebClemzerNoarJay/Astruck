@@ -29,6 +29,25 @@
 
 	<section>
 		<nav id="bandeau">
+			<h2>Position en temps réel</h2>
+			<!--Element map via Api de google pour generer la minicarte de position en temps réel-->
+			<div id="map"></div>
+			<script>
+				function initMap() 
+				{
+				  var uluru = {lat: 48.049518, lng: -1.743215};
+				  var map = new google.maps.Map(document.getElementById('map'), {
+				    zoom: 10,
+				    center: uluru
+				  });
+				  var marker = new google.maps.Marker({
+				    position: uluru,
+				    map: map
+				  });
+				}
+			</script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o&callback=initMap">
+    		</script>
 		</nav>
 		
 	</section>
