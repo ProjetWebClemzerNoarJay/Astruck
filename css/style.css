@@ -1,0 +1,44 @@
+#map 
+{
+	width: 150px; 
+	height:150px;
+
+}
+
+#titlePos
+{
+
+}
+
+#bandeau
+{
+	width: 300px;
+	height: 350px;
+	background-color: grey;
+	overflow: hidden;
+	position: fixed;
+		left: -295px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-arround;
+	align-items: center;
+	z-index: 1;
+}
+
+#bandeau:hover
+{
+	transform: translateX(290px);
+}
+
+#fleche
+{
+	width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-left: 10px solid grey;
+	position: fixed;
+	bottom: 200px;
+	margin: 0;
+
+}

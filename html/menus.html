@@ -2,7 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="../css/#"/>
+	<link rel="stylesheet" href="../css/#style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.2.1.slim.js"></script>
 	<title>Accueil Astruck</title>
 </head>
 <body>
@@ -10,30 +11,47 @@
 		<div id="logo">
 		</div>
 		<nav id="menuPrincipal">
-			<div class="menu" id="accueil">Accueil</div>
-			<div class="menu" id="carte">Carte</div>
-			<div class="menu" id="menus">Nos Menus</div>
-			<div class="menu" id="hamburgers">Nos Hamburgers</div>
-			<div class="menu" id="desserts">Nos Desserts</div>
-			<div class="menu" id="boissons">Nos Boissons</div>
-			<div class="menu" id="nousTrouver">Où Nous Trouver</div>
-			<div class="menu" id="evenementiel">Evenementiel</div>
+			<div class="menu" id="accueil"><a href="index.html">Accueil</a></div>
+			<div class="menu" id="carte"><a href="carte.html">Carte</a></div>
+			<div class="menu" id="menus"><a href="menus.html">Nos Menus</a></div>
+			<div class="menu" id="hamburgers"><a href="hamburgers.html">Nos Hamburgers</a></div>
+			<div class="menu" id="desserts"><a href="desserts.html">Nos Desserts</a></div>
+			<div class="menu" id="boissons"><a href="boissons.html">Nos Boissons</a></div>
+			<div class="menu" id="nousTrouver"><a href="nousTrouver.html">Où Nous Trouver</a></div>
+			<div class="menu" id="evenementiel"><a href="evenementiel.html">Evenementiel</a></div>
 		</nav>
 		<div class="social" id="social">
-			<img src="../img/logos/twitter.png" alt="logo Twitter" width="50" height="50" title="Notre Twitter"\>
-			<img src="../img/logos/li.png" alt="logo LinkedIn" width="50" height="50" title="Notre LinkedIn"\>
-			<img src="../img/logos/fb.png" alt="logo Facebook" width="50" height="50" title="Notre Facebook"\>
+			<img src="../img/logos/twitter.png" alt="logo Twitter" width="50" height="45" title="Notre Twitter"\>
+			<img src="../img/logos/li.png" alt="logo LinkedIn" width="65" height="65" title="Notre LinkedIn"\>
+			<img src="../img/logos/fb.png" alt="logo Facebook" width="78" height="45" title="Notre Facebook"\>
 			<img src="../img/logos/insta.png" alt="logo Instagram" width="50" height="50" title="Notre Instagram"\>
 		</div>	
 	</header>
 
 	<section>
 		<nav id="bandeau">
+			<h2>Position en temps réel</h2>
+			<!--Element map via Api de google pour generer la minicarte de position en temps réel-->
+			<div id="map"></div>
+			<script>
+				function initMap() 
+				{
+				  var uluru = {lat: 48.049518, lng: -1.743215};
+				  var map = new google.maps.Map(document.getElementById('map'), {
+				    zoom: 10,
+				    center: uluru
+				  });
+				  var marker = new google.maps.Marker({
+				    position: uluru,
+				    map: map
+				  });
+				}
+			</script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o&callback=initMap">
+    		</script>
 		</nav>
-		<video src="../video/#" controls autoload width="800" height="400">Merci de mettre votre navigateur à jour</video>
-		<article id="presentations">
-			
-		</article>
+		<div id="fleche"></div>
+		
 	</section>
 
 	<footer>
