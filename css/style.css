@@ -1,44 +1,238 @@
+@font-face
+{
+	font-family: 'caviar';
+	src: url('../font/CaviarDreams.ttf');
+}
+
+/*Bonnes pratiques*/
+*
+{
+	margin: 0;
+	box-sizing: border-box;
+	font-family: caviar;
+}
+
+/*Propriétés du bandeau*/
+
 #map 
 {
-	width: 150px; 
-	height:150px;
+	width: 200px; 
+	height:200px;
+	border: 1px solid grey;
 
 }
 
-#titlePos
-{
-
-}
-
+/*Positionnement du bandeau (fixe, apparaissant au dessus des éléments et minimisé pour l'effet de translation)*/
 #bandeau
 {
 	width: 300px;
 	height: 350px;
-	background-color: grey;
-	overflow: hidden;
+	background-color: #282D32;
 	position: fixed;
-		left: -295px;
+		left: -297px;
+		top: 100px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-arround;
+	justify-content: space-around;
 	align-items: center;
 	z-index: 1;
+	padding: 15px;
+	color: grey;
+	text-align: center;
+	font-weight: lighter;
+	opacity: 0.9;
 }
 
+#bandeau p
+{
+	font-size: 0.8em;
+	text-decoration: underline;
+}
+
+#bandeau h2
+{
+	font-size: 1.3em;
+}
+
+/*Affichage du menu au survol*/
 #bandeau:hover
 {
 	transform: translateX(290px);
 }
 
+/*Création d'une petite fleche pour indiquer que le bandeau se déroule*/
 #fleche
 {
 	width: 0;
 	height: 0;
 	border-top: 15px solid transparent;
 	border-bottom: 15px solid transparent;
-	border-left: 10px solid grey;
+	border-left: 6px solid #282D32;
 	position: fixed;
-	bottom: 200px;
-	margin: 0;
+		top: 240px;
+		left: 5px;
+	opacity: 0.9;
 
+}
+
+/*Propriétés du menu déroulant*/
+
+/*Utilisation d'elements flex pour la disposition, definition de la typologie du header, disposition des éléments (logos/liens de menus), effets de survol*/
+header
+{
+	display: flex;
+	background-color: #282D32;
+	text-align: center;
+	height: 61px;
+}
+
+#logo
+{
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+	margin-top: 5px;
+	margin-left: 25px;
+}
+
+#menuPrincipal
+{
+	display: flex;
+	font-size: 1.6em;
+}
+
+#menuPrincipal div a
+{
+	text-decoration: none;
+	height: 61px;
+	color: grey;
+	padding-top: 20px;
+	position: relative;
+	z-index: 1;
+}
+
+#menuPrincipal div
+{
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+#accueil, #nousTrouver, #evenements
+{
+	padding-top: 20px;
+}
+
+#accueil:hover, #nousTrouver:hover, #evenements:hover, #carte a:hover
+{
+	background-color: #525456;
+	text-decoration: underline;
+}
+
+#carte
+{
+	display: flex;
+	flex-direction: column;
+}
+
+#carte *
+{
+	padding-bottom: 25px;
+	width: 160px;
+	margin-right: -25px;
+	margin-left: -25px;
+}
+
+/*Sous menu definit comme n'existant pas, affichés au survol via js cf: ../js/script.js*/
+#menus, #hamburgers, #boissons, #desserts
+{
+	display: none;
+	background-color: #282D32;
+	
+}
+
+/*Alignement des éléments social (logos)*/
+#twitter, #fb
+{
+	position: relative;
+		top: 11px;
+}
+
+#twitter
+{
+	right: -73px
+}
+
+#fb
+{
+	right: -70px;
+}
+
+#insta
+{	
+	position: relative;
+		right: -70px;
+		top: 9px;
+}
+
+#li
+{
+	position: relative;
+		right: -79px;
+		top: 2px;
+}
+
+/*Propriétés de la banniere d'accueil*/
+
+#banniere
+{
+	height: 200px;
+	text-align: center;
+}
+
+#titlePrinc
+{
+	font-size: 3em;
+	position: relative;
+		top: 100px;
+}
+
+@media screen and (max-width: 1020px)
+/*Requete média pour eviter le débordement et redimentionner le header*/
+{
+	header
+	{
+		height: 90px;
+	}
+
+	#carte *
+	{
+		padding-bottom: 70px;
+	}
+
+	#logo
+	{
+		margin-top: 15px;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	#nousTrouver
+	{
+		padding-top: 10px;
+	}
+
+	/*Repositionnement des logos en cas de fenetre redimentionnée*/
+	#twitter, #fb, #li, #insta
+	{
+		margin-top: 15px;
+	}
+}
+
+@media all and (max-device-width: 480px)
+/*Requete média pour les appareils mobile*/
+{
+    #menuPrincipal
+    {
+    	font-size: 1.2em;
+    }
 }

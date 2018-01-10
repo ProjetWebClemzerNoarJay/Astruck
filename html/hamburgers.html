@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="../css/style.css"/>
-	<script type="text/javascript" src="../js/jquery-3.2.1.slim.js"></script>
-	<title>Accueil Astruck</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script type="text/javascript" src="../js/jquery-3.2.1.slim.js"></script>
+    <title>Accueil Astruck</title>
 </head>
 <body>
-	<header>
-		<div id="logo">
-		</div>
-		<nav id="menuPrincipal">
-			<div class="menu" id="accueil"><a href="index.html">Accueil</a></div>
-			<div class="menu" id="carte"><a href="carte.html">Carte</a></div>
-			<div class="menu" id="menus"><a href="menus.html">Nos Menus</a></div>
-			<div class="menu" id="hamburgers"><a href="hamburgers.html">Nos Hamburgers</a></div>
-			<div class="menu" id="desserts"><a href="desserts.html">Nos Desserts</a></div>
-			<div class="menu" id="boissons"><a href="boissons.html">Nos Boissons</a></div>
-			<div class="menu" id="nousTrouver"><a href="nousTrouver.html">Où Nous Trouver</a></div>
-			<div class="menu" id="evenementiel"><a href="evenementiel.html">Evenementiel</a></div>
-		</nav>
-		<div class="social" id="social">
-			<img src="../img/logos/twitter.png" alt="logo Twitter" width="50" height="45" title="Notre Twitter"\>
-			<img src="../img/logos/li.png" alt="logo LinkedIn" width="65" height="65" title="Notre LinkedIn"\>
-			<img src="../img/logos/fb.png" alt="logo Facebook" width="78" height="45" title="Notre Facebook"\>
-			<img src="../img/logos/insta.png" alt="logo Instagram" width="50" height="50" title="Notre Instagram"\>
-		</div>	
-	</header>
+    <header>
+        <a href="index.html"><img src="../img/logos/logofinal.png" alt="logo de la société Astruck" id="logo"/></a>
+        </div>
+        <nav id="menuPrincipal">
+            <div class="menu" id="accueil"><a href="index.html">Accueil</a></div>
+            <div class="menu" id="carte">
+                <a href="carte.html" id="crte">Carte</a>
+                <a href="menus.html" id="menus">Menus</a>
+                <a href="hamburgers.html" id="hamburgers">Hamburgers</a>
+                <a href="desserts.html" id="desserts">Desserts</a>
+                <a href="boissons.html" id="boissons">Boissons</a>
+            </div>
+            <div class="menu" id="nousTrouver"><a href="nousTrouver.html">Nous Trouver</a></div>
+            <div class="menu" id="evenements"><a href="evenementiel.html">Evenements</a></div>
+        </nav>
+        <a href="#"><img src="../img/logos/twitter.png" alt="logo Twitter" width="43" height="37" title="Notre Twitter" id="twitter"\></a>
+        <a href="#"><img src="../img/logos/li.png" alt="logo LinkedIn" width="60" height="58" title="Notre LinkedIn" id="li"\></a>
+        <a href="#"><img src="../img/logos/fb.png" alt="logo Facebook" width="73" height="40" title="Notre Facebook" id="fb"\></a>
+        <a href="#"><img src="../img/logos/insta.png" alt="logo Instagram" width="43" height="43" title="Notre Instagram" id="insta"\></a>
+    </header>
 
 	<section>
 		<nav id="bandeau">
-			<h2>Position en temps réel</h2>
-			<!--Element map via Api de google pour generer la minicarte de position en temps réel-->
-			<div id="map"></div>
-			<script>
-				function initMap() 
-				{
-				  var uluru = {lat: 48.049518, lng: -1.743215};
-				  var map = new google.maps.Map(document.getElementById('map'), {
-				    zoom: 10,
-				    center: uluru
-				  });
-				  var marker = new google.maps.Marker({
-				    position: uluru,
-				    map: map
-				  });
-				}
-			</script>
+			<h2 id="titlePos">Position en temps réel</h2>
+			<div id="map" width="150" height="150"></div>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o&callback=initMap">
-    		</script>
+			</script>
+			<script type="text/javascript" src="../js/script.js"></script>
 		</nav>
-		<div id="fleche"></div>
-		
+			<div id="fleche"></div>
+            
+            <div id="hamburgercentre">
+                <h1 id="titrehamburger">Nos Hamburgers</h1>
+                <div id="accompagnement">
+                    <p>Accompagnement</p><br/>
+                    <p>Frites ou Potatoes ou Salade</p><br/>
+                    <p>Prix = 2€50</p>
+                    <img src="..." alt="accompagnement" title="Accompagnement"/>
+                </div>
+            </div>
+            <div id="hamburgergauche">
+                <div id="vegan">
+                    <p>Vegan</p><br/>
+                    <p>Prix = 6€</p>
+                    <img src="..." alt="Vegan" title="Vegan"/>
+                </div>
+                <div id="cheeseburger">
+                    <p>Cheeseburger</p><br/>
+                    <p>Prix = 6€</p>
+                    <img src="..." alt="Cheeseburger" title="Cheeseburger"/>
+                </div>
+                <div id="chevre">
+                    <p>Chèvre</p><br/>
+                    <p>Prix = 6€</p>
+                    <img src="..." alt="Chèvre" title="Chèvre"/>
+                </div>
+            </div>
+            <div id="hamburgerdroite">
+                <div id="poisson">
+                    <p>Poisson</p><br/>
+                    <p>Prix = 6€</p>
+                    <img src="..." alt="Poisson" title="Poisson"/>
+                </div>
+                <div id="bacon">
+                    <p>Bacon</p><br/>
+                    <p>Prix = 6€</p>
+                    <img src="..." alt="Bacon" title="Bacon"/>
+                </div>
+                <div id="poulet">
+                    <p>Poulet</p><br/>
+                    <p>Prix = 6€</p>
+                    <img src="..." alt="Poulet" title="Poulet"/>
+                </div>
+            </div>   
 	</section>
 
 	<footer>
-		<div id="mensions">
+		<div id="mentions">
 			
 		</div>
 		<div id="contact">
