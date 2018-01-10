@@ -69,7 +69,7 @@ function ajaxGet(url, callback)
 //Récuperation de l'adresse format JSON au format String et ajout à l'élément p
 function createAddress(reponse)
 {
-	pElt.textContent = JSON.parse(reponse).results[1]["formatted_address"];
+	pElt.textContent = JSON.parse(reponse).results[0]["formatted_address"];
 }
 
 //Fonction affichant le sous menu du menu principal au survol
