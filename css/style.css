@@ -209,7 +209,27 @@ h1
 
 h2
 {
-	margin-bottom: 20px; 
+	margin-bottom: 20px;
+	text-align: center; 
+}
+
+#presentations h2
+{
+	margin-top: 50px;
+}
+
+#presentations p
+{
+	text-align: center;
+}
+
+video
+{
+	display: block;
+	margin: 0 auto;
+	width: 800px;
+	height: 400px;
+	margin-bottom: 25px;
 }
 
 section
@@ -218,6 +238,7 @@ section
 	padding-bottom: 50px;
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 100px;
 }
 
 hr
@@ -297,6 +318,10 @@ footer
     justify-content: space-around;
     align-items: center;
     height: 60px;
+    width: 100%;
+    position: fixed;
+    	bottom: 0px;
+    margin-bottom: 0;
 }
 
 footer, header, section
