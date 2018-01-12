@@ -187,7 +187,7 @@ function hide_menu()
 	}
 }
 
-//Fonction cachant et affichant la fleche d'indication du bandeau
+//Fonction d'affichage et de masquage de la fleche d'indication du bandeau
 function hide_arrow()
 {
 	var arrow = $("#fleche");
@@ -200,6 +200,7 @@ function show_arrow()
 	arrow.css("visibility", "visible");
 }
 
+//Fonction d'affichage et de masquage de l'infoMap de la page nous trouver
 function show_infoMap(e)
 {
 	info.css("animation", "fadein 1s 0s linear 1");
@@ -217,6 +218,7 @@ function hide_infoMap()
 	info.css("animation", "none");
 }
 
+//Fonction d'affichage et de masquage des informations liés aux evenements spéciaux (fetes)
 function show_infoFete(e)
 {
 	infoFete.css("animation", "fadein 1s 0s linear 1");

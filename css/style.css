@@ -316,6 +316,7 @@ section
 		right: 15px;
 	text-decoration: none;
 	color: black;
+	font-size: 1.3em;
 }
 
 #semaine li a:hover, #nomFete li a:hover
@@ -342,7 +343,34 @@ hr
 	height: 300px;
 }
 
+/*debut page carte*/
+section img
+{
+    width: 200px;
+    height: 200px;
+}
 
+
+/*Propriétés des pages de produits*/
+#listemenubas, #listemenuhaut, #carteM, #hamburgersP, #dessertsP, #boissonsP
+{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+}
+
+.menuP, .carteMenu, .burger, .dessert, .boisson
+{
+    width: 35%;
+    padding: 1%;
+    margin-top: 25px;
+    border: 1px ridge black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
 
 section img
 {
