@@ -8,7 +8,7 @@
 </head>
 <body>
 	<header>
-		<a href="index.html"><img src="../img/logos/logofinal.png" alt="logo de la société Astruck" id="logo"/></a>
+		<a href="index.html" id="lienLogo"><img src="../img/logos/logofinal.png" alt="logo de la société Astruck" id="logo"/></a>
 		<nav id="menuPrincipal">
 			<div class="menu" id="accueil"><a href="index.html">Accueil</a></div>
 			<div class="menu" id="carte">
@@ -35,32 +35,34 @@
 			<div id="map" width="150" height="150"></div>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o&callback=initMap">
 			</script>
-			<script type="text/javascript" src="../js/script.js"></script>
 		</nav>
 			<div id="fleche"></div>
 		
 		<h1>Evenements</h1>
         <div id="fete">
+            <div id="nomFete">
             <h2>Venez donc pour les fêtes !</h2>
-            <div id="nomfete">
                 <ul>
-                    <li>La saint Valentin</li>
-                    <li>Poisson d'Avril</li>
-                    <li>Pâques</li>
-                    <li>La fête de la musique</li>
-                    <li>Halloween</li>
-                    <li>Noël</li>
+                    <li><a href="#" id="stVal">La saint Valentin</a></li>
+                    <li><a href="#" id="avril">Poisson d'Avril</a></li>
+                    <li><a href="#" id="paques">Pâques</a></li>
+                    <li><a href="#" id="ftMusique">La fête de la musique</a></li>
+                    <li><a href="#" id="halloween">Halloween</a></li>
+                    <li><a href="#" id="noel">Noël</a></li>
                 </ul>
             </div>
-        </div>
-        <div id="planning">
+            <hr/>
+            <div id="planning">
             <h2>Planning</h2>
-        <!--description en Javascript? pour le burger -->
+            <div id="infoFete"></div>
+        	<!--description en Javascript? pour le burger -->
+        	</div>
         </div>
+        <script type="text/javascript" src="../js/script.js"></script>
 	</section>
 
 	<footer>
-		<p id="mensions">© 2017 Astruck - Allrights reserved - THEME by ZerTeam</p>
+		<p id="mensions">© 2017 Astruck - All rights reserved - Designed by ZerTeam</p>
 		<hr id="hrFt"/>
         <p id="contact">Mobile: 06.99.25.47.20<br/>Email: Astruck@miam.fr</p>
 	</footer>
