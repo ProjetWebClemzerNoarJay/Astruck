@@ -45,11 +45,11 @@
 #bandeau
 {
 	width: 300px;
-	height: 350px;
-	background-color: #282D32;
+	height: 380px;
+	background-color: #42464D;
 	position: fixed;
-		left: -296px;
-		top: 150px;
+		left: -295px;
+		top: 100px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -60,6 +60,8 @@
 	text-align: center;
 	font-weight: lighter;
 	opacity: 0.9;
+	border: 2px solid black;
+ 	border-radius: 0px 60px 0px 60px;
 }
 
 #bandeau p
@@ -88,12 +90,11 @@
 	height: 0;
 	border-top: 15px solid transparent;
 	border-bottom: 15px solid transparent;
-	border-left: 7px solid #282D32;
+	border-left: 7px solid #42464D;
 	position: fixed;
-		top: 300px;
-		left: 6px;
+		top: 280px;
+		left: 7px;
 	opacity: 0.9;
-
 }
 
 /*Propriétés du menu déroulant*/
@@ -103,9 +104,10 @@ header
 {
 	display: flex;
 	justify-content: space-between;
-	background-color: #282D32;
+	background-color: #42464D;
 	text-align: center;
 	height: 90px;
+	min-width: 870px;
 }
 
 #logo
@@ -174,7 +176,7 @@ header
 #menus, #hamburgers, #boissons, #desserts
 {
 	display: none;
-	background-color: #282D32;
+	background-color: #42464D;
 	
 }
 
@@ -216,20 +218,21 @@ header
 	background-image: url('../img/banniere.jpg');
 	background-size: cover;
 	background-position: center;
+	min-width: 870px;
 }
 
 h1
 {
 	text-align: center;
 	font-size: 3em;
-	margin-bottom: 80px;
+	margin-bottom: 50px;
 	margin-top: 20px;
 }
 
 /*Propriétés du contenu du site (sections)*/
 h2
 {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	text-align: center; 
 }
 
@@ -260,7 +263,7 @@ section
 	padding-bottom: 30px;
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 }
 
 #index
@@ -346,64 +349,142 @@ hr
 /*debut page carte*/
 section img
 {
-    width: 200px;
-    height: 200px;
+ width: 200px;
+ height: 200px;
 }
 
+/* redimensionne que les boissons*/
+.burger img
+{
+ margin-top: 20px; /*rajout marge entre image et texte*/
+}
+
+.carteMenu img
+{
+ margin-top: 70px; /*rajout marge entre image et texte*/
+}
+
+.boisson img
+{
+ width: 100px;
+ margin-top: 20px;
+}
+
+/* redimensionne imgs une nouvelle fois certains desserts car pas même taille image que les autres
+*/
+#kinder img, #snickers img, #Twix
+{
+ width: 70%;
+ height: 60%;
+ margin-top: 20px;
+}
+
+#muffin img, #brownie img, #fruits img, #potdeglace img
+{
+ margin-top: 20px;
+}
+
+#potdeglace img
+{
+ width: 160px;
+}
+
+/* redimensionne img cola une nouvelle fois certains desserts car pas même taille image que les
+autres */
+#coca
+{
+ width: 100px;
+ height: 200px;
+}
+
+#bCoca
+{
+ width: 70px;
+ height: 200px;
+}
+
+#glace
+{
+ width: 150px;
+ height: 200px;
+}
+
+#chocolat ,#The
+{
+ width: 160px;
+}
+
+.cartemenu
+{
+ flex-direction: row;
+ justify-content: space-between;
+}
 
 /*Propriétés des pages de produits*/
 #listemenubas, #listemenuhaut, #carteM, #hamburgersP, #dessertsP, #boissonsP
 {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    text-align: center;
+ display: flex;
+ justify-content: space-around;
+ flex-wrap: wrap;
+ width: 100%;
+ text-align: center;
+ margin-top: -150px;
+}
+
+#menu3 img, #menu4 img
+{
+ height: 150px;
 }
 
 .menuP, .carteMenu, .burger, .dessert, .boisson
 {
-    width: 35%;
-    padding: 1%;
-    margin-top: 25px;
-    border: 1px ridge black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+ width: 500px;
+ padding: 1%;
+ margin-top: 150px; /*marge entre les images*/
+ border: 1px ridge black;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background: #42464D;
+ font-size: 20px; /*taille du texte*/
+ color: white; /*couleur du texte*/
+ border: 2px solid black;
+ border-radius: 0px 60px 0px 60px;
 }
 
-section img
+/* couleur du lien en blanc et soulignement lors passage de la souris */
+a
 {
-	width: 200px;
-	height: 200px;
+ color: #FFFFFF;
+ text-decoration: none;
+}
+
+a:active, a:hover
+{
+ text-decoration: underline;
 }
 
 /*Propriétés du footer*/
-
-footer 
+footer
 {
-	color: azure;
-    background-color: #282D32;
-    display: flex;
-    flex-direction: raw;
-    justify-content: space-around;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    position: fixed;
-    	bottom: 0px;
-    margin-bottom: 0;
-}
-
-footer, header, section
-{
-	min-width: 860px;
+ color: azure;
+ background-color: #42464D;
+ display: flex;
+ flex-direction: raw;
+ justify-content: space-around;
+ align-items: center;
+ height: auto;
+ padding: 10px;
+ width: 100%;
+ position: fixed;
+ bottom: 0px;
+ border-top: 2px solid black;
 }
 
 #hrFt
 {
-	height: 30px;
+height: 30px;
 }
 
 @media all and (max-device-width: 480px)

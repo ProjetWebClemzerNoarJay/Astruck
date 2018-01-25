@@ -70,7 +70,7 @@ var lngInfo;
 //Récupération du jour courrant
 var date = new Date();
 var day = date.getDay();
-
+day = 2;
 //On verifie pour les coordonnées d'affichage de la carte qu'il s'agit bien d'un jour ouvré et on les récupère dans les variables associées
 //Affichage de la carte par defaut, supression des éléments si samedi ou dimanche
 elt.id = "pInfoCarte";
@@ -104,7 +104,7 @@ aElt2.mouseover(show_infoFete);
 aElt2.mouseout(hide_infoFete);
 
 //Definition des fonctions
-//Fonction d'initialisation de la carte
+//Fonction d'initialisation des cartes
 function initMap() 
 {
     var uluru = {lat: lat, lng: lng};
@@ -171,8 +171,8 @@ function scroll_menu()
 	var elts = document.querySelectorAll("#carte a");
 	for (var i = 1; i < elts.length; i++)
 	{
-		elts[i].style.display = "block";
-		elts[i].style.animation = "fadein 1s 0s linear 1";
+	elts[i].style.display = "block";
+		elts[i].style.animation = "fadein 0.6s 0s linear 1";
 
 	}
 }
