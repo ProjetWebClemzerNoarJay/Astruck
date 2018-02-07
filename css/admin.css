@@ -1,0 +1,170 @@
+/* Tips */
+body 
+{
+    margin: 0;
+}
+
+* 
+{
+    box-sizing: border-box;
+}
+
+/* Polices de caractères */
+@font-face
+{
+	font-family: 'caviar';
+	src: url('../font/CaviarDreams.ttf');
+}
+
+@font-face
+{
+	font-family: 'caviarB';
+	src: url('../font/CaviarDreams_Bold.ttf');
+}
+
+/* Application du CSS */
+*
+{
+    font-family: 'caviar', serif;
+}
+
+h1 
+{
+    text-align: center;
+    font-size: 50px;
+    color: azure;
+}
+
+header
+{
+    background-color: #42464D;
+    margin-top: -40px;
+    padding-top: 20px;
+}
+
+h2 
+{
+    color: white;
+    text-align: center;
+}
+
+section 
+{
+    background-color: #42464D;
+    border: 10px double #42464D;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding-bottom: 10px;
+
+}
+
+div 
+{
+    background-color: lightslategray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+table 
+{
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+td 
+{
+    border: 1px solid black;
+}
+
+th 
+{
+    border: 1px solid black;
+}
+
+fieldset 
+{
+    border-radius: 5px;
+}
+
+legend
+{
+    font-weight: bold;
+}
+
+#logo 
+{
+    width: 100px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+#logo:hover 
+{
+    opacity: 0.8;
+}
+
+/*Alignement des éléments des formulaires*/
+label
+{
+    display: block;
+    width: 150px;
+    float: left;
+}
+
+input, textarea
+{
+    width: 150px;
+}
+
+textarea
+{
+    height: 100px;
+}
+
+input[type="submit"], input[type="button"]
+{
+    display: block;
+    margin: auto;
+    font-weight: bold;
+}
+
+input[type="submit"]
+{
+    margin-top: 15px;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+li
+{
+    list-style: square;
+}
+
+#astruck
+{
+    position: fixed;
+        top: 20px;
+        left: 20px;
+    opacity: 0.8;
+}
+
+#astruck:hover
+{
+    opacity: 1;
+}
+
+#errorBlock
+{
+    color: azure;
+}

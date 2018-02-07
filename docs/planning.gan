@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Astruck" company="ZerTeam" webLink="http://" view-date="2018-01-08" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.5" locale="fr_FR">
+    <description><![CDATA[Anne-Sophie et Nicolas ont pour projet de démarrer un projet de Food-Truck, ils sont venu à notre rencontre afin que nous réalisions leur site web.]]></description>
+    <view zooming-state="default:4" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="134" order="0"/>
+        <field id="tpd4" name="Date de début" width="86" order="1"/>
+        <field id="tpd5" name="Date de fin" width="61" order="2"/>
+        <option id="color.recent"><![CDATA[#ff0000 #ff6600 #ff9900 #66ff00 #99ff00 #ccff00 #ffff00 #ff3300 #ffcc00 #e1e1e1]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nom" width="210" order="0"/>
+        <field id="1" name="Rôle par défaut" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Création du wireframe" color="#ff0000" meeting="false" start="2018-01-08" duration="1" complete="0" priority="2" expand="true">
+            <depend id="4" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="10" name="Création du répertoire de travail github" color="#ff0000" meeting="false" start="2018-01-08" duration="1" complete="0" priority="2" expand="true"/>
+        <task id="13" name="Edition des pages HTML (structure de base)" color="#ff3300" meeting="false" start="2018-01-09" duration="1" complete="0" priority="2" expand="true">
+            <depend id="45" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="4" name="Vérification du wireframe" color="#ff0000" meeting="false" start="2018-01-09" duration="1" complete="0" priority="2" expand="true">
+            <depend id="7" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="7" name="Modification du wireframe" color="#99ff00" meeting="false" start="2018-01-10" duration="1" complete="0" expand="true"/>
+        <task id="29" name="Récupération des images du site" color="#ffcc00" meeting="false" start="2018-01-09" duration="1" complete="0" expand="true"/>
+        <task id="32" name="Organisation de l'équipe et répartition des tâches" color="#ff0000" meeting="false" start="2018-01-08" duration="1" complete="0" priority="2" expand="true"/>
+        <task id="35" name="Création du bandeau" color="#ffcc00" meeting="false" start="2018-01-09" duration="1" complete="0" expand="true"/>
+        <task id="38" name="Création du header" color="#ffcc00" meeting="false" start="2018-01-09" duration="1" complete="0" expand="true"/>
+        <task id="43" name="Création du logo d'Astruck" color="#ccff00" meeting="false" start="2018-01-09" duration="1" complete="0" expand="true"/>
+        <task id="45" name="Intégration HTML" color="#ff6600" meeting="false" start="2018-01-10" duration="1" complete="0" expand="true"/>
+        <task id="56" name="Création d'animations de base" color="#ff9900" meeting="false" start="2018-01-09" duration="1" complete="0" expand="true">
+            <depend id="51" type="2" difference="0" hardness="Strong"/>
+            <depend id="53" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="59" name="Création du menu déroulant" color="#ff3300" meeting="false" start="2018-01-14" duration="2" complete="0" priority="2" expand="true"/>
+        <task id="80" name="Vérification du CSS" color="#ff0000" meeting="false" start="2018-01-19" duration="1" complete="0" priority="2" expand="true"/>
+        <task id="84" name="Retouches CSS" color="#ffff00" meeting="false" start="2018-01-19" duration="1" complete="0" expand="true"/>
+        <task id="86" name="Vérification des commentaires" color="#99ff00" meeting="false" start="2018-01-19" duration="1" complete="0" expand="true"/>
+        <task id="88" name="Travail sur le responsive" color="#66ff00" meeting="false" start="2018-01-20" duration="1" complete="0" priority="0" expand="true"/>
+        <task id="91" name="Ellaboration du MCD et MLD" color="#ff0000" meeting="false" start="2018-01-23" duration="1" complete="0" priority="2" expand="true">
+            <depend id="94" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="94" name="Création de la BDD" color="#ff0000" meeting="false" start="2018-01-24" duration="1" complete="0" priority="2" expand="true"/>
+        <task id="98" name="Ellaboration du modèle de classes PHP" color="#ff0000" meeting="false" start="2018-01-25" duration="1" complete="0" priority="2" expand="true">
+            <depend id="100" type="2" difference="0" hardness="Strong"/>
+            <depend id="103" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="100" name="Création des classes de base" color="#ff0000" meeting="false" start="2018-01-26" duration="2" complete="0" priority="2" expand="true"/>
+        <task id="108" name="Création de la page d'administration" color="#99ff00" meeting="false" start="2018-01-28" duration="1" complete="0" expand="true">
+            <depend id="110" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="110" name="Edition du style de la page d'administration" color="#66ff00" meeting="false" start="2018-01-29" duration="1" complete="0" priority="0" expand="true"/>
+        <task id="103" name="Création des classes manager" color="#ff0000" meeting="false" start="2018-01-26" duration="3" complete="0" priority="2" expand="true"/>
+        <task id="105" name="Inclusion des parties statiques du site en PHP" color="#ccff00" meeting="false" start="2018-01-23" duration="1" complete="0" expand="true"/>
+        <task id="115" name="Inclusion des produits présents en BDD dans le site via nos classes" color="#ff6600" meeting="false" start="2018-02-06" duration="2" complete="0" expand="true"/>
+        <task id="118" name="Création du pannier de commande" color="#ff0000" meeting="false" start="2018-02-06" duration="3" complete="0" priority="2" expand="true"/>
+        <task id="120" name="Création de la page de connexion" color="#ff6600" meeting="false" start="2018-02-06" duration="1" complete="0" expand="true">
+            <depend id="124" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="122" name="Création de la page d'inscription" color="#ff6600" meeting="false" start="2018-02-06" duration="1" complete="0" expand="true">
+            <depend id="124" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="124" name="Création des pages de traitement" color="#ff6600" meeting="false" start="2018-02-07" duration="1" complete="0" expand="true"/>
+        <task id="127" name="Vérification de la v2" color="#ff0000" meeting="false" start="2018-02-10" duration="1" complete="0" priority="2" expand="true"/>
+        <task id="96" name="Vérification de la v1 du site" color="#ff0000" meeting="false" start="2018-01-22" duration="1" complete="0" priority="2" expand="true"/>
+        <task id="51" name="Finition du header" color="#ff6600" meeting="false" start="2018-01-10" duration="1" complete="0" expand="true"/>
+        <task id="60" name="Animations JS des pages Nous trouver et Evenements" color="#ff6600" meeting="false" start="2018-01-14" duration="1" complete="0" expand="true"/>
+        <task id="62" name="Finition des pages HTML" color="#ffcc00" meeting="false" start="2018-01-14" duration="1" complete="0" expand="true"/>
+        <task id="66" name="Vérification des pages HTML" color="#ff0000" meeting="false" start="2018-01-14" duration="1" complete="0" priority="2" expand="true"/>
+        <task id="72" name="Redimentionnement des images" color="#ccff00" meeting="false" start="2018-01-14" duration="1" complete="0" expand="true"/>
+        <task id="75" name="Edition du CSS" color="#ff0000" meeting="false" start="2018-01-16" duration="3" complete="0" priority="2" expand="true"/>
+        <task id="53" name="Finition du bandeau" color="#ff3300" meeting="false" start="2018-01-10" duration="1" complete="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="Clément Boisnard" function="Default:0" contacts="" phone=""/>
+        <resource id="1" name="Arnaud Piquet" function="Default:0" contacts="" phone=""/>
+        <resource id="2" name="Jeremy Coley" function="Default:0" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="0" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="4" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="29" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="32" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="62" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="66" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="75" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="80" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="86" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="88" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="91" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="96" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="98" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="105" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="115" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="124" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="127" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="4" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="7" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="13" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="32" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="43" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="45" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="62" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="66" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="72" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="80" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="84" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="86" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="91" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="96" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="98" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="100" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="103" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="110" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="118" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="120" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="122" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="127" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="10" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="32" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="35" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="38" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="51" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="53" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="56" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="59" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="60" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="66" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="80" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="86" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="88" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="91" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="94" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="96" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="98" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="100" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="103" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="108" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="127" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles>
+        <role id="1" name=""/>
+    </roles>
+</project>

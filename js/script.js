@@ -1,13 +1,4 @@
 
-//Definition d'un planning de positions en fonction du jour de la semaine, à renseigner par le client pour le mettre a jour. La position du bandeau se mettra à jour automatiquement selon le jour
-var pos = new Array();
-//A partir de l'indice 1, chaque case du tableau représente un jour de la semaine (L - V) auquel il suffit d'entrer les coordonnées latitute et longitude de l'endroit où placer le marqueur sur la carte
-pos[1] = new Array(48.108020, -1.690978);
-pos[2] = new Array(48.129878, -1.631405);
-pos[3] = new Array(48.047597, -1.602005);
-pos[4] = new Array(48.093407, -1.634320);
-pos[5] = new Array(48.131091, -1.674463);
-
 //Variables pour les animation de la page evenements
 //Variables contenant l'adresse lors des jours spéciaux (evenements) à modifier directement par le client
 var stVal = "Avenue de Bréquigny, 35200 Rennes.";
@@ -70,16 +61,16 @@ var lngInfo;
 //Récupération du jour courrant
 var date = new Date();
 var day = date.getDay();
-day = 2;
-//On verifie pour les coordonnées d'affichage de la carte qu'il s'agit bien d'un jour ouvré et on les récupère dans les variables associées
+
+//On verifie pour les coordonnées d'affichage de la carte qu'il s'agit bien d'un jour ouvré et récupère la position courrante
 //Affichage de la carte par defaut, supression des éléments si samedi ou dimanche
 elt.id = "pInfoCarte";
 
 if (day != 0 && day != 6)
 {
 	var open = true;
-	var lat = pos[day][0];
-	var lng = pos[day][1];
+	var lat = Number(pos["latitude"]);
+	var lng = Number(pos["longitude"]);
 	//Récupération de l'adresse en fonction de la lat et lng via api google maps et ajout à notre elt
 	ajaxGet("https://maps.googleapis.com/maps/api/geocode/json?&latlng=" + lat + "," + lng + "&key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o", createAddress1);
 }
@@ -90,18 +81,34 @@ else
 }
 bandeau.append(elt);
 
-//Ajout des evenements hover/nohover
-carte.mouseover(scroll_menu);
-carte.mouseout(hide_menu);
-bandeau.mouseover(hide_arrow);
-bandeau.mouseout(show_arrow);
+//Ajout des différents évènements avec quelques modification pour les terminaux mobiles (apparition au click, au lieu du hover peu pratique)
+//Test confitionnel permettant de definir si le device est un mobile ou autre, pas de menu dérouant sur mobile, navigation via les liens de la page carte
+if (navigator.userAgent.match(/(android|iphone|blackberry|symbian|symbianos|symbos|netfront|model-orange|javaplatform|iemobile|windows phone|samsung|htc|opera mobile|opera mobi|opera mini|presto|huawei|blazer|bolt|doris|fennec|gobrowser|iris|maemo browser|mib|cldc|minimo|semc-browser|skyfire|teashark|teleca|uzard|uzardweb|meego|nokia|bb10|playbook)/gi))
+{
+	//Suite des evenements hover/nohover
+	bandeau.click(hide_arrow);
 
-//Ajout de l'évenement d'apparition de la map avec la pos du marqueur en fonction du jour + elt p contenant l'adresse complète
-aElt.mouseover(show_infoMap);
-aElt.mouseout(hide_infoMap);
+	//Ajout de l'évenement d'apparition de la map avec la pos du marqueur en fonction du jour + elt p contenant l'adresse complète
+	aElt.click(show_infoMap);
+	
+	aElt2.click(show_infoFete);
+}
+else
+{
+	//Ajout des evenements hover/nohover (menu déroulants/badeau/pages nous trouver et evenements)
+	carte.mouseover(scroll_menu);
+	carte.mouseout(hide_menu);
 
-aElt2.mouseover(show_infoFete);
-aElt2.mouseout(hide_infoFete);
+	bandeau.mouseover(hide_arrow);
+	bandeau.mouseout(show_arrow);
+
+	//Ajout de l'évenement d'apparition de la map avec la pos du marqueur en fonction du jour + elt p contenant l'adresse complète
+	aElt.mouseover(show_infoMap);
+	aElt.mouseout(hide_infoMap);
+
+	aElt2.mouseover(show_infoFete);
+	aElt2.mouseout(hide_infoFete);
+}
 
 //Definition des fonctions
 //Fonction d'initialisation des cartes
@@ -204,8 +211,8 @@ function show_arrow()
 function show_infoMap(e)
 {
 	info.css("animation", "fadein 1s 0s linear 1");
-	latInfo = pos[e.target.id][0];
-	lngInfo = pos[e.target.id][1];
+	latInfo = Number(week[e.target.id]["latitude"]);
+	lngInfo = Number(week[e.target.id]["longitude"]);
 	initInfoMap();
 	ajaxGet("https://maps.googleapis.com/maps/api/geocode/json?&latlng=" + latInfo + "," + lngInfo + "&key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o", createAddress2);
 	info.append(elt2);
