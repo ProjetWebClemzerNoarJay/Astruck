@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../php/init.php";
 
 $_POST = $adminView->wash($_POST);
@@ -193,4 +194,9 @@ else if ($_POST["form"] == "setup")
 	{
 		header("Location: admin.php?setted=" . $id);
 	}
+}
+else if ($_POST["form"] == "superAdmin")
+{
+	$_SESSION["s"] = $_POST["psswd"];
+	header("Location: admin.php");
 }

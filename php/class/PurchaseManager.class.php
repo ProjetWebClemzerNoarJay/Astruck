@@ -6,6 +6,10 @@ class PurchaseManager extends Manager
 	public static $CHAMPS = ["id_commande", "id_produit", "quantite"];
 
 	//Méthode d'ajout d'une commande en bdd
+	/**
+	*	@param Purchase $purchase
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function addPurchase(Purchase $purchase)
 	{
 		try
@@ -22,6 +26,10 @@ class PurchaseManager extends Manager
 	}
 
 	//Méthode de supression d'une commande en bdd
+	/**
+	*	@param int $id - id de l'achat à supprimer en bdd
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function delPurchase(int $id)
 	{
 		try
@@ -39,6 +47,12 @@ class PurchaseManager extends Manager
 	}
 
 	//Méthode de modification d'un champ de commande en bdd, utilisation de la concaténation des 2 clefs étrangères pour la séléction
+	/**
+	*	@param int $oId - id_commande de l'achat à modifier en bdd (1ere partie clé primaire)
+	*	@param int $pId - id_produit de l'achat à modifier en bdd (2eme partie clé primaire)
+	*	@param String $champ - nom du champ à modifier en bdd
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function setPurchaseField($oId, $pId, String $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
@@ -62,6 +76,12 @@ class PurchaseManager extends Manager
 	}
 
 	//Fonctions d'acces aux champs (individuel) de nos commandes en base de donnée
+	/**
+	*	@param int $id - id de l'achat à accéder en bdd (1ere partie clé primaire)
+	*	@param int $pId - id_produit de l'achat à accéder en bdd (2eme partie clé primaire)
+	*	@param String $champ - nom du champ à accéder en bdd
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function getPurchaseField($id, $pId, String $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
@@ -88,6 +108,10 @@ class PurchaseManager extends Manager
 	}
 
 	//Méthode de chargement des achats associés à l'id de commande passé en paramètre
+	/**
+	*	@param int $id - id_commande de l'achat à charger en bdd (1ere partie clé primaire)
+	*	@return int|Achat 0| - objet achat initialisé avec le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function loadPurchase(int $id)
 	{
 		try
@@ -106,6 +130,10 @@ class PurchaseManager extends Manager
 	}
 
 	//Méthode listant toutes nos commande en bdd
+	/**
+	*	@param int $nb|null - nombre d'entrée de la table achat à récupérer
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function listPurchase(int $nb = null)
 	{
 		if (isset($nb))

@@ -1,10 +1,9 @@
-
-
 <?php
 	session_start();
 	//Vérification si la variable de session est bien définie et valide, si elle ne l'est pas, redirection immédiate vers la page index
 	include "../php/init.php";
-
+	//Définition d'un mot de passe superAdmin permettant d'acceder à la seconde partie de l'interface d'administration affiché crypté pour plus de sécurité
+	$passwd = "281c9d348b1dd60bf07e326bd6f4db43cd4c3df189ba3dab8d1ac4b9e8b26c1d";
 
 	//Gestion des evenements supression sur la page d'index
 	if (isset($_GET["del"]) && isset($_GET["cat"]))
@@ -127,7 +126,22 @@
 		</div>
 	</section>
 	<?php
-		include "superAdminPannels.php";
+		//Vérification du mot de passe => super admin => affichage du super admin pannel
+		if (isset($_SESSION["s"]))
+		{
+			if ($userManager->saltAndCrypt($_SESSION["s"]) == $passwd) 
+			{
+				include "superAdminPannels.php";
+			}
+			else
+			{
+				include "adminForm.php";
+			}
+		}
+		else
+		{
+			include "adminForm.php";
+		}
 	?>
 </body>
 </html>
