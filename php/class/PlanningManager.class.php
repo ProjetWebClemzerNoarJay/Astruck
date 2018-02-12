@@ -8,6 +8,10 @@ class PlanningManager extends Manager
 	public static $WEEK = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 
 	//Méthode d'ajour d'un objet planning en bdd
+	/**
+	*	@param Planning $plg - objet planning à inserer en base de donnée
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function addPlanning(Planning $plg)
 	{
 		try
@@ -35,6 +39,10 @@ class PlanningManager extends Manager
 	}
 
 	//Méthode de supression d'un planning en bdd via son id
+	/**
+	*	@param int $id - l'id du planning à supprimer en base de donnée
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function delPlanning(int $id)
 	{
 		try
@@ -52,7 +60,13 @@ class PlanningManager extends Manager
 	}
 
 	//Méthode de modification d'un champ d'une entrée de notre table planning en fonction de son id
-	public function setPlanningField($id = null, String $champ, $new)
+	/**
+	*	@param int $id - id du planning à modifier en base de donnée
+	*	@param String $champ - chaine représentant le champ à modifier
+	*	@param mixed $new - valeur a affecter
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
+	public function setPlanningField($id, String $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -74,6 +88,11 @@ class PlanningManager extends Manager
 	}
 
 	//Fonctions d'acces aux champs (individuel) de nos commandes en base de donnée
+	/**
+	*	@param int $id - id du planning à accéder en base de donnée
+	*	@param String $champ - chaine représentant le champ à accéder
+	*	@return int|array 0|$answ[0] - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function getPlanningField($id, String $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
@@ -99,6 +118,10 @@ class PlanningManager extends Manager
 	}
 
 	//Méthode de chargement d'un array associatif d'hydratation pour instancier un objet Planning corréspondant à une entrée de notre bdd
+	/**
+	*	@param int $id - id du planning à accéder en base de donnée
+	*	@return int|Planning 0| - objet Planning initialisé avec le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function loadPlanning(int $id)
 	{
 		try
@@ -118,6 +141,10 @@ class PlanningManager extends Manager
 	}
 
 	//Méthode permettant de retourner l'ensemble de nos entrées de notre table planning (modulable via le param optionnel) dans un tableau de tableaux
+	/**
+	*	@param int $nb|null - nombre d'entrées à retrouner depuis la première en bdd
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function listPlannings(int $nb = null)
 	{
 		if (isset($nb))
@@ -148,6 +175,10 @@ class PlanningManager extends Manager
 	}
 
 	//Méthode retournant la lat et la lon pour un jour donné en paramètre
+	/**
+	*	@param String $jour - Chaine permettant de séléctionner le jour souhaité
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function returnLatLon(String $jour)
 	{
 		try
@@ -166,6 +197,10 @@ class PlanningManager extends Manager
 	}
 
 	//Méthode retournant la lat et la lon pour le jour courrant
+	/**
+	*	@param void
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function returnCurrLatLon()
 	{
 		$day = date('w');
@@ -185,6 +220,10 @@ class PlanningManager extends Manager
 	}
 
 	//Méthode retournant la lat et la lon pour la semaine
+	/**
+	*	@param void
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function returnWeekLatLon()
 	{
 		try

@@ -6,6 +6,10 @@ class ProductManager extends Manager
 	public static $CHAMPS = ["id_produit", "nom", "prix", "image", "description", "id_type"];
 
 	//Fonctions d'ajout, de suppression et de modification de produits dans notre table produit
+	/**
+	*	@param Product $prd
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function addProduct(Product $prd)
 	{
 		try
@@ -33,6 +37,11 @@ class ProductManager extends Manager
 	}
 
 	//Méthode de supression d'un produit (via id ou nom pour plus d'ergonomie, nom étant définit comme unique)
+	/**
+	*	@param int $id|null - id du produit à supprimer en bdd
+	*	@param String $nom|null - nom du produit à supprimer en bdd
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function delProduct(int $id = null, String $nom = null)
 	{
 		if (isset($id))
@@ -69,6 +78,12 @@ class ProductManager extends Manager
 	}
 
 	//Méthode de modification d'un champ d'une entrée de notre table produit
+	/**
+	*	@param int $id - id du produit à modifier en bdd
+	*	@param String $champ - nom du champ à modifier en bdd
+	*	@param mixed $new - valeur a affecter
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function setProductField($id, String $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
@@ -91,6 +106,11 @@ class ProductManager extends Manager
 	}
 
 	//Fonctions d'acces aux champs (individuel) de nos produits en base de donnée
+	/**
+	*	@param int $id - id du produit à accéder en bdd
+	*	@param String $champ - nom du champ à accéder en bdd
+	*	@return int|array 0|$answ[0] - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function getProductField($id, String $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
@@ -117,6 +137,11 @@ class ProductManager extends Manager
 	}
 
 	//Méthode de récuperation d'une entrée de notre table produit via id ou nom (ergonomie / unique)
+	/**
+	*	@param int $id|null - id du produit à accéder en bdd
+	*	@param String $nom|null - nom du produit à accéder en bdd
+	*	@return int|Product 0| - objet produit initialisé avec le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function loadProduct(int $id = null, String $nom = null)
 	{
 		if (isset($id))
@@ -155,6 +180,10 @@ class ProductManager extends Manager
 	}
 
 	//Méthode listant toutes nos entrées de la bdd
+	/**
+	*	@param int $nb|null - nombre d'entrées à retrouner depuis la première en bdd
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function listProducts(int $nb = null)
 	{
 		if (isset($nb))
@@ -184,7 +213,11 @@ class ProductManager extends Manager
 		return $data;
 	}
 
-	//Méthode de "conversion" d'un id produit en nom de produit
+	//Méthode de "conversion" d'un nom de produit en id associé
+	/**
+	*	@param String $name - nom du produit concerné
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function getProductIdFromName($name)
 	{
 		try

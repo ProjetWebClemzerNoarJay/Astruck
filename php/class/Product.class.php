@@ -2,6 +2,8 @@
 //Création de la classe des produits
 class Product
 {
+	use EntityTrait;
+
 	protected $id_produit;
 	protected $nom;
 	protected $prix;
@@ -9,114 +11,113 @@ class Product
 	protected $description;
 	protected $id_type;
 
-	/**
-	*	@param array $params tableau associatif contenant le couple clé/valeur d'initialisation de l'objet
-	*/
-	//Methodes d'initialisation (constructeur et hydratation)
-	public function __construct(Array $params)
-	{
-		$this->hydrate($params);
-	}
-
-	/**
-	*	@param array $data tableau associatif contenant le couple clé/valeur d'initialisation de l'objet
-	*/
-	public function hydrate(Array $data)
-	{
-		foreach ($data as $key => $value)
-		{
-			$method = "set" . ucfirst($key);
-			if (method_exists($this, $method))
-			{
-				$this->$method($value);
-			}
-		}
-	}
-
 	//Getters
+	/**
+	*	@param void
+	*	@return int $id_produit
+	*/
 	public function getId_produit()
 	{
 		return $this->id_produit;
 	}
 
+	/**
+	*	@param void
+	*	@return String $nom
+	*/
 	public function getNom()
 	{
 		return $this->nom;
 	}
 
+	/**
+	*	@param void
+	*	@return float $prix
+	*/
 	public function getPrix()
 	{
 		return $this->prix;
 	}
 
+	/**
+	*	@param void
+	*	@return String $image
+	*/
 	public function getImage()
 	{
 		return $this->image;
 	}
 
+	/**
+	*	@param void
+	*	@return String $description
+	*/
 	public function getDescription()
 	{
 		return $this->description;
 	}
 
+	/**
+	*	@param void
+	*	@return int $id_type
+	*/
 	public function getId_type()
 	{
 		return $this->type;
 	}
 
 	//Setters
+	/**
+	*	@param String|int $new
+	*	@return void
+	*/
 	public function setId_produit($new)
 	{
 		$this->id_produit = (int) $new;
 	}
 
+	/**
+	*	@param String $new
+	*	@return void
+	*/
 	public function setNom(String $new)
 	{
 		$this->nom = $new;
 	}
 
+	/**
+	*	@param String|float $new
+	*	@return void
+	*/
 	public function setPrix($new)
 	{
 		$this->prix = (float) $new;
 	}
 
+	/**
+	*	@param String $new
+	*	@return void
+	*/
 	public function setImage(String $new)
 	{
 		$this->image = $new;
 	}
 
-	public function setDescription($new)
+	/**
+	*	@param String $new
+	*	@return void
+	*/
+	public function setDescription(String $new)
 	{
 		$this->description = $new;
 	}
 
+	/**
+	*	@param String|int $new
+	*	@return void
+	*/
 	public function setId_type($new)
 	{
 		$this->id_type = (int) $new;
-	}
-
-	//Fonction permettant de retourner un tableau des valeurs des attributs de notre objet
-	/**
-	*	@param bool $assoc|false permetant de recuperer un tableau associatif si vrai
-	*	@return array $objArray contenant toutes les valeurs des attributs de l'objet
-	*/
-	public function toArray(bool $assoc = false)
-	{
-		$objArray = array();
-		if ($assoc)
-		{
-			foreach ($this as $attr => $value)
-			{
-				$objArray[$attr] = $value;
-			}
-		}
-		else
-		{
-			foreach ($this as $attr => $value)
-			{
-				$objArray[] = $value;
-			}
-		}
-		return $objArray;
 	}
 }

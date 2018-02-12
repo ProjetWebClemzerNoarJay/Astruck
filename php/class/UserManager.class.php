@@ -6,6 +6,10 @@ class UserManager extends Manager
 	public static $CHAMPS = ["id_user", "nom", "prenom", "email", "mdp", "tel"];
 
 	//Fonctions d'ajout, de suppression et de modification d'utilisateurs dans notre table user
+	/**
+	*	@param User $user
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function addUser(User $user)
 	{
 		try
@@ -33,6 +37,12 @@ class UserManager extends Manager
 		return 1;
 	}
 
+	//Méthode de suppression d'un utilisateur dans notre bdd
+	/**
+	*	@param int $id|null - id de l'user à supprimer en bdd
+	*	@param String $nom|null - nom de l'user à supprimer en bdd
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function delUser(int $id = null, String $email = null)
 	{
 		if (isset($id))
@@ -68,6 +78,12 @@ class UserManager extends Manager
 		return 0;
 	}
 
+	//Méthode de modification d'un champ d'utilisateur en bdd
+	/**
+	*	@param int $id - id de l'utilisateur à modifier en bdd (1ere partie clé primaire)
+	*	@param String $champ - nom du champ à modifier en bdd
+	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*/
 	public function setUserField($id, String $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
@@ -90,6 +106,11 @@ class UserManager extends Manager
 	}
 
 	//Fonctions d'acces aux champs (individuel) d'utilisateur en base de donnée
+	/**
+	*	@param int $id - id de l'utilisateur à accéder en bdd
+	*	@param String $champ - nom de l'utilisateur à accéder en bdd
+	*	@return int|array 0|$answ[0] - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function getUserField($id, String $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
@@ -115,6 +136,11 @@ class UserManager extends Manager
 	}
 
 	//Méthode de chargement d'un utilisateur via id ou email (unique)
+	/**
+	*	@param int $id|null - id de l'utilisateur à accéder en bdd
+	*	@param String $email|null - email de l'utilisateur à accéder en bdd
+	*	@return int|Type 0| - objet User initialisé avec le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function loadUser(int $id = null, String $email = null)
 	{
 		if (isset($id))
@@ -153,6 +179,10 @@ class UserManager extends Manager
 	}
 
 	//Méthode retournant la liste de tous nos utilisateurs
+	/**
+	*	@param int $nb|null - nombre d'entrées à retrouner depuis la première en bdd
+	*	@return int|array 0|$data - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
+	*/
 	public function listUsers(int $nb = null)
 	{
 		if (isset($nb))
@@ -186,7 +216,12 @@ class UserManager extends Manager
 		return 0;
 	}
 
-	//Méthode de vérification si un user est admin ou non 
+	//Méthode de vérification si un user est admin ou non
+	/**
+	*	@param int $id|null - id de l'utilisateur concerné
+	*	@param String $email|null - email de l'utilisateur concerné
+	*	@return int 0|1 - si l'utilisateur est admin 1 sinon 0
+	*/
 	public function isAdmin($id = null, String  $email = null)
 	{
 		if (isset($id))
@@ -227,6 +262,11 @@ class UserManager extends Manager
 	}
 
 	//Méthode de salage et de hashage des mots de passe utilisateurs (jamais stockées en clair pour la sécurité)
+	/**
+	*	@param String $mdp|null - mot de passe à crypter
+	*	@param User $user|null - utilisateur dont on veut crypter le mot de passe
+	*	@return String|int - mot de passe crypté ou 0 si aucun paramètre n'est passé
+	*/
 	public function saltAndCrypt(String $mdp = null, User $user = null)
 	{
 		if (!isset($mdp) && !isset($user))
@@ -243,7 +283,11 @@ class UserManager extends Manager
 	}
 
 	//Méthode d'authentification d'un utilisateur via un tableau d'id (email/mdp)
-	public function logIn(Array $ids)
+	/**
+	*	@param array $ids - couple d'identifiant et mot de passe
+	*	@return int 0|$data["id_user"] - id de l'utilisateur si success sinon 0
+	*/
+	public function logIn(array $ids)
 	{
 		try
 		{
@@ -265,6 +309,10 @@ class UserManager extends Manager
 	}
 
 	//Méthode de vérification des champs d'un utilisateur retournant un message d'erreur associé aux erreurs éventuelles
+	/**
+	*	@param User $usr - utilisateur à checker
+	*	@return int|array 0|$eMsg - tableau contenant la concaténation des messages d'erreur s'il y en a sinon 0
+	*/
 	public function validateUserFields(User $usr)
 	{
 		$eMsg = "";
@@ -299,6 +347,11 @@ class UserManager extends Manager
 	}
 
 	//Idem au dessus mais pour 1 seul champ
+	/**
+	*	@param User $usr - utilisateur à checker
+	*	@param String $field - le champ à checker
+	*	@return int|array 0|$eMsg - tableau contenant la concaténation des messages d'erreur s'il y en a sinon 0
+	*/
 	public function validateUserField(User $usr, String $field)
 	{
 		$eMsg = "";

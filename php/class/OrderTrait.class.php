@@ -8,32 +8,6 @@ Trait OrderTrait
 	protected $id_user;
 	protected $prix;
 
-	/**
-	*	@param array $params tableau associatif contenant le couple clé/valeur d'initialisation de l'objet
-	*	@return void
-	*/
-	//Methodes d'initialisation (constructeur et hydratation)
-	public function __construct(Array $params)
-	{
-		$this->hydrate($params);
-	}
-
-	/**
-	*	@param array $data tableau associatif contenant le couple clé/valeur d'initialisation de l'objet
-	*	@return void
-	*/
-	public function hydrate(Array $data)
-	{
-		foreach ($data as $key => $value)
-		{
-			$method = "set" . ucfirst($key);
-			if (method_exists($this, $method))
-			{
-				$this->$method($value);
-			}
-		}
-	}
-
 	//Getters
 	/**
 	*	@param void
@@ -94,7 +68,7 @@ Trait OrderTrait
 	*	@param String $new
 	*	@return void
 	*/
-	public function setDate_commande($new)
+	public function setDate_commande(String $new)
 	{
 		$this->date_commande = $new;
 	}
@@ -103,7 +77,7 @@ Trait OrderTrait
 	*	@param String $new
 	*	@return void
 	*/
-	public function setHeure_commande($new)
+	public function setHeure_commande(String $new)
 	{
 		$this->heure_commande = $new;
 	}
@@ -124,30 +98,5 @@ Trait OrderTrait
 	public function setPrix($new)
 	{
 		$this->prix = (int) $new;
-	}
-
-	//Fonction permettant de retourner un tableau des valeurs des attributs de notre objet
-	/**
-	*	@param bool $assoc|false permetant de recuperer un tableau associatif si vrai
-	*	@return array $objArray contenant toutes les valeurs des attributs de l'objet
-	*/
-	public function toArray(bool $assoc = false)
-	{
-		$objArray = array();
-		if ($assoc)
-		{
-			foreach ($this as $attr => $value)
-			{
-				$objArray[$attr] = $value;
-			}
-		}
-		else
-		{
-			foreach ($this as $attr => $value)
-			{
-				$objArray[] = $value;
-			}
-		}
-		return $objArray;
 	}
 }

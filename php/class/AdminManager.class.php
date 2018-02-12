@@ -63,7 +63,7 @@ class AdminManager extends Manager
 	/**
 	*	@param int|String $id - l'id de l'admin a modifier en bdd
 	*	@param String $champ - champ a modifier en bdd
-	*	@param int|String $new - la valeur a entrer en bdd
+	*	@param mixed $new - valeur a affecter
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
 	public function setAdminField($id, String $champ, $new)
