@@ -50,10 +50,10 @@ class PurchaseManager extends Manager
 	/**
 	*	@param int $oId - id_commande de l'achat à modifier en bdd (1ere partie clé primaire)
 	*	@param int $pId - id_produit de l'achat à modifier en bdd (2eme partie clé primaire)
-	*	@param String $champ - nom du champ à modifier en bdd
+	*	@param string $champ - nom du champ à modifier en bdd
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function setPurchaseField($oId, $pId, String $champ, $new)
+	public function setPurchaseField($oId, $pId, string $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -79,10 +79,10 @@ class PurchaseManager extends Manager
 	/**
 	*	@param int $id - id de l'achat à accéder en bdd (1ere partie clé primaire)
 	*	@param int $pId - id_produit de l'achat à accéder en bdd (2eme partie clé primaire)
-	*	@param String $champ - nom du champ à accéder en bdd
+	*	@param string $champ - nom du champ à accéder en bdd
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function getPurchaseField($id, $pId, String $champ)
+	public function getPurchaseField($id, $pId, string $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -142,6 +142,7 @@ class PurchaseManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM achat LIMIT 0, " . $nb);
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{
@@ -154,6 +155,7 @@ class PurchaseManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM achat");
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{

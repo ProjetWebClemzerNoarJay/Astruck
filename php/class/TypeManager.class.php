@@ -39,10 +39,10 @@ class TypeManager extends Manager
 	//Méthode de supression d'un type en bdd (via id ou nom (unique))
 	/**
 	*	@param int $id|null - id du type à supprimer en bdd
-	*	@param String $nom|null - nom du type à supprimer en bdd
+	*	@param string $nom|null - nom du type à supprimer en bdd
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function delType(int $id = null, String $nom = null)
+	public function delType(int $id = null, string $nom = null)
 	{
 		if (isset($id))
 		{
@@ -80,11 +80,11 @@ class TypeManager extends Manager
 	//Méthode de modification d'un champ d'une entrée de notre table type
 	/**
 	*	@param int $id - id du type à modifier en bdd
-	*	@param String $champ - nom du champ à modifier en bdd
+	*	@param string $champ - nom du champ à modifier en bdd
 	*	@param mixed $new - valeur a affecter
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function setTypeField($id, String $champ, $new)
+	public function setTypeField($id, string $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -108,10 +108,10 @@ class TypeManager extends Manager
 	//Fonctions d'acces aux champs (individuel) de nos types en base de donnée
 	/**
 	*	@param int $id - id du type à accéder en bdd
-	*	@param String $champ - nom du type à accéder en bdd
+	*	@param string $champ - nom du type à accéder en bdd
 	*	@return int|array 0|$answ[0] - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
 	*/
-	public function getTypeField($id, String $champ)
+	public function getTypeField($id, string $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -138,10 +138,10 @@ class TypeManager extends Manager
 	//Méthode de chargement d'un type en bdd
 	/**
 	*	@param int $id|null - id du type à accéder en bdd
-	*	@param String $nom|null - nom du type à accéder en bdd
+	*	@param string $nom|null - nom du type à accéder en bdd
 	*	@return int|Type 0| - objet type initialisé avec le resultat de la requette si la requete s'est correctement executee sinon 0
 	*/
-	public function loadType(int $id = null, String $nom = null)
+	public function loadType(int $id = null, string $nom = null)
 	{
 		if (isset($id))
 		{
@@ -191,6 +191,7 @@ class TypeManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM type LIMIT 0, " . $nb);
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{
@@ -203,6 +204,7 @@ class TypeManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM type");
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{

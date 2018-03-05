@@ -65,14 +65,18 @@ var day = date.getDay();
 //On verifie pour les coordonnées d'affichage de la carte qu'il s'agit bien d'un jour ouvré et récupère la position courrante
 //Affichage de la carte par defaut, supression des éléments si samedi ou dimanche
 elt.id = "pInfoCarte";
-
-if (day != 0 && day != 6)
+if (day != 0 && day != 6 && typeof(pos) !== 'undefined')
 {
 	var open = true;
 	var lat = Number(pos["latitude"]);
 	var lng = Number(pos["longitude"]);
 	//Récupération de l'adresse en fonction de la lat et lng via api google maps et ajout à notre elt
 	ajaxGet("https://maps.googleapis.com/maps/api/geocode/json?&latlng=" + lat + "," + lng + "&key=AIzaSyCauZ_bhI-nz6vJdf2fS7skFOMCwGkkw_o", createAddress1);
+}
+else if (typeof(pos) === 'undefined') 
+{
+	elt.append("Désolé, nous rencontrons un problème technique. Merci de vous référer à nos horaires rubrique \"Nous Trouver\"");
+	map.remove();
 }
 else
 {

@@ -7,16 +7,16 @@ class OrderManager extends Manager
 
 	//Méthode d'ajour d'un objet Order en bdd
 	/**
-	*	@param Order $ord - representant la commande a creer en bdd
-	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
+	*	@param int|string $idUser - id de l'user associé à la commande
+	*	@return int 0|$idO - id de la commande si la requete s'est correctement executee sinon 0
 	*/
-	public function addOrder(Order $ord)
+	public function addOrder($idUser)
 	{
 		try
 		{
 			$req = $this->db->query("SELECT MAX(id_commande) FROM commande");
 			$data = $req->fetch();
-			$ord->setId_commande($data[0] + 1);
+			$idO = $data[0] + 1;
 			$req->closeCursor();
 		}
 		catch (PDOException $e)
@@ -25,15 +25,17 @@ class OrderManager extends Manager
 		}
 		try
 		{
-			$req = $this->db->prepare("INSERT INTO commande VALUES(?, ?, ?, ?)");
-			$req->execute($ord->toArray());
+			$req = $this->db->prepare("INSERT INTO commande VALUES(:io, CURRENT_DATE, CURRENT_TIME, :iu)");
+			$req->bindValue(":io", $idO);
+			$req->bindValue("iu", (int)$idUser);
+			$req->execute();
 			$req->closeCursor();
 		}
 		catch (PDOException $e)
 		{
 			return 0;
 		}
-		return 1;
+		return $idO;
 	}
 
 	/**
@@ -58,12 +60,12 @@ class OrderManager extends Manager
 
 	//Méthode de modifcation d'un champ d'une entrée (via id) de notre table commande
 	/**
-	*	@param int|String $id - l'id de la commande a modifier en bdd
-	*	@param String $champ - champ a modifier en bdd
+	*	@param int|string $id - l'id de la commande a modifier en bdd
+	*	@param string $champ - champ a modifier en bdd
 	*	@param mixed $new - valeur a affecter
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function setOrderField($id, String $champ, $new)
+	public function setOrderField($id, string $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -87,10 +89,10 @@ class OrderManager extends Manager
 	//Fonctions d'acces aux champs (individuel) de nos commandes en base de donnée
 	/**
 	*	@param int $id - l'id de la commande a acceder en bdd
-	*	@param String $champ - champ a recuperer en bdd
+	*	@param string $champ - champ a recuperer en bdd
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function getOrderField($id, String $champ)
+	public function getOrderField($id, string $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -148,6 +150,7 @@ class OrderManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM commande LIMIT 0, " . $nb);
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{
@@ -160,6 +163,7 @@ class OrderManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM commande");
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{

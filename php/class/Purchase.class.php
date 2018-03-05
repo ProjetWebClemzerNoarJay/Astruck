@@ -38,7 +38,7 @@ class Purchase
 
 	//Setters
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_commande($new)
@@ -47,7 +47,7 @@ class Purchase
 	}
 
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_produit($new)
@@ -56,7 +56,7 @@ class Purchase
 	}
 
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setQuantite($new)

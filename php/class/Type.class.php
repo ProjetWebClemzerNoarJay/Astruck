@@ -18,7 +18,7 @@ class Type
 
 	/**
 	*	@param void
-	*	@return String $nom
+	*	@return string $nom
 	*/
 	public function getNom()
 	{
@@ -27,7 +27,7 @@ class Type
 
 	//Setters
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_type($new)
@@ -36,10 +36,10 @@ class Type
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setNom(String $new)
+	public function setNom(string $new)
 	{
 		$this->nom = $new;
 	}

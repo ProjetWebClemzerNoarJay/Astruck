@@ -2,6 +2,12 @@
 //Page de traitement des formulaires de connexion et d'enregistrement
 session_start();
 include '../php/init.php';
+
+if (!isset($_POST["form"]))
+{
+	header("Location : index.php");
+}
+
 if ($_POST["form"] == "login")
 {
 
@@ -12,11 +18,12 @@ if ($_POST["form"] == "login")
 		$_SESSION["id"] = $id;
 		if($userManager->isAdmin($id))
 		{
+			$_SESSION["idA"] = $admMgr->idUsrToIdAdm($_SESSION["id"]);
 			$_SESSION["auth"] = $userManager->saltAndCrypt($_POST["mdp"]);
 			header("Location: ../admin/admin.php");
 		}
 		else
-		{
+		{	
 			header("Location: index.php");
 		}
 	}

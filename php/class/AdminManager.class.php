@@ -61,12 +61,12 @@ class AdminManager extends Manager
 
 	//Methode de modification d'un champ d'un administrateur dans la base de donnée
 	/**
-	*	@param int|String $id - l'id de l'admin a modifier en bdd
-	*	@param String $champ - champ a modifier en bdd
+	*	@param int|string $id - l'id de l'admin a modifier en bdd
+	*	@param string $champ - champ a modifier en bdd
 	*	@param mixed $new - valeur a affecter
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function setAdminField($id, String $champ, $new)
+	public function setAdminField($id, string $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -90,10 +90,10 @@ class AdminManager extends Manager
 	//Fonctions d'acces aux champs (individuel) de nos commandes en base de donnée
 	/**
 	*	@param int $id - l'id de l'admin auquel acceder en bdd
-	*	@param String $champ - champ a recuperer en bdd
+	*	@param string $champ - champ a recuperer en bdd
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function getAdminField($id, String $champ)
+	public function getAdminField($id, string $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -153,6 +153,7 @@ class AdminManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM admin LIMIT 0, " . $nb);
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{
@@ -165,6 +166,7 @@ class AdminManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM admin");
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{

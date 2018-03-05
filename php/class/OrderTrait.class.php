@@ -20,7 +20,7 @@ Trait OrderTrait
 
 	/**
 	*	@param void
-	*	@return String $date_commande
+	*	@return string $date_commande
 	*/
 	public function getDate_commande()
 	{
@@ -56,7 +56,7 @@ Trait OrderTrait
 
 	//Setters
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_commande($new)
@@ -65,25 +65,25 @@ Trait OrderTrait
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setDate_commande(String $new)
+	public function setDate_commande(string $new)
 	{
 		$this->date_commande = $new;
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setHeure_commande(String $new)
+	public function setHeure_commande(string $new)
 	{
 		$this->heure_commande = $new;
 	}
 
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_user($new)
@@ -92,7 +92,7 @@ Trait OrderTrait
 	}
 
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setPrix($new)

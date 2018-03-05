@@ -5,11 +5,11 @@ class AdminViewManager
 	//Méthode génèrant l'affichage des tableaux de gestion des données de notre bdd (hors commandes), la methode travaille sur un array de liste des entrées de nos tables ainsi que la catégorie associée (utilisée via données get pour les eevenements de supression/modification)
 	// /!\ chemins des images à remodifier en cas de modification de la hierarchie des fichiers
 	/**
-	*	@param Array $data - tableau des listes d'entrees en bdd a afficher
-	*	@param String $cat - nom de la categorie concernee par l'affichage
+	*	@param array $data - tableau des listes d'entrees en bdd a afficher
+	*	@param string $cat - nom de la categorie concernee par l'affichage
 	*	@return int 1|0 - 1 si valeurs a afficher sinon 0
 	*/
-	public function showAdminPannel($data, String $cat)
+	public function showAdminPannel(array $data, string $cat)
 	{
 		if (is_array($data))
 		{
@@ -62,10 +62,10 @@ class AdminViewManager
 
 	//Méthode d'affichage du panneau d'affichage des commandes, même principe de fonctionnement que la fonction d'affichage précédent mais sans argument catégorie
 	/**
-	*	@param Array $data - tableau des listes d'entrees en bdd a afficher
+	*	@param array $data - tableau des listes d'entrees en bdd a afficher
 	*	@return int 1|0 - 1 si valeurs a afficher sinon 0
 	*/
-	public function showAdminFullOrderPannel($data)
+	public function showAdminFullOrderPannel(array $data)
 	{
 		$cat = "commande";
 		if (is_array($data))
@@ -168,7 +168,7 @@ class AdminViewManager
 	//Méthode d'afichage des formulaires de modification de nos éléments
 	/**
 	*	@param Manager $classMgr - classe manager associee a l'objet a modifier
-	*	@param int $id - id associe a l'objet a modifier
+	*	@param int $id|string - id associe a l'objet a modifier
 	*	@return void
 	*/
 	public function showModifyItemPannel(Manager $classMgr, $id)
@@ -217,7 +217,7 @@ class AdminViewManager
 	/**
 	*	@param OrderManager $ordMgr - manager associee a la commande a modifier
 	*	@param PurchaseManager $purchaseManager - manager associe aux l'achats de la commande
-	*	@param int|String $id - id de la commande a modifier
+	*	@param int|string $id - id de la commande a modifier
 	*	@return void
 	*/
 	public function showModifyFullOrderPannel(OrderManager $ordMgr, PurchaseManager $purchaseMgr, $id)
@@ -279,10 +279,10 @@ class AdminViewManager
 
 	//Methode d'affichage du bouton d'ajout d'un élément
 	/**
-	*	@param String $cat - categorie associee au bouton
+	*	@param string $cat - categorie associee au bouton
 	*	@return void
 	*/
-	public function showAddButton(String $cat)
+	public function showAddButton(string $cat)
 	{
 		
 		echo "<a href=\"admin.php?cat=" . $cat . "&add=1#" . $cat . "s\"><input type=\"button\" value=\"Ajouter\" id=\"add" . ucfirst($cat) . "\"/></a>";
@@ -290,7 +290,7 @@ class AdminViewManager
 
 	//Méthode filtrant les messages de validation à afficher en fonction des valeurs transmises par $_GET et définies dans la fonction
 	/**
-	*	@param Array $get - superglobale tableau $_GET
+	*	@param array $get - superglobale tableau $_GET
 	*	@return void
 	*/
 	public function showValidateMessage(array $get)
@@ -315,7 +315,8 @@ class AdminViewManager
 
 	//Méthode filtrant les messages d'erreur à afficher en fonction des mêmes paramètres que la fonction précédente
 	/**
-	*	@param Array $get - superglobale tableau $_GET
+	*	@param array $get - superglobale tableau $_GET
+	*	@param bool $front|false - si vrai, pas d'affichage du message
 	*	@return int 0|void - 0 si l'indice d'erreur choisi n'est pas present dans le tableau
 	*/
 	public function showErrorMessage(array $get, $front = false)
@@ -351,18 +352,18 @@ class AdminViewManager
 			{
 				if ($value)
 				{
-					echo "<p><strong>" . $value . ".</strong></p>";
+					echo "<p><strong>." . $value . ".</strong></p>";
 				}
 			}
 		}
 	}
 
-	//Méthode de sécurisation des chaines entrées via formulaire
+	//Méthode de sécurisation des chaines entrées via formulaire, retourne le tableau nettoyé des risques d'injections de code
 	/**
-	*	@param Array $tab - superglobale tableau $_POST a securiser
-	*	@return Array $tab - tableau "echappe"
+	*	@param array $tab - superglobale tableau $_POST a securiser
+	*	@return array $tab - tableau "echappe"
 	*/
-	public function wash(Array $tab)
+	public function &wash(array $tab)
 	{
 		$db = PDOFactory::getDb();
 		foreach ($tab as $value)
@@ -370,5 +371,63 @@ class AdminViewManager
 			$value = $db->quote($value);
 		}
 		return $tab;
+	}
+
+	//Méthode d'affichage générique des produits présent en base de donnée
+	/**
+	*	@param array $prds - tableau listant les produits d'une catégorie à afficher
+	*	@param string $cat - catégorie des produits à afficher
+	*	@return void
+	*/
+	public function showProducts(array $prds, string $cat)
+	{
+		echo '<div id="' . $cat . 'sP">';
+		foreach ($prds as $value) 
+		{
+			//Conversion du nom de produit en id (retrait des majuscules, espaces et conversion des accents)
+			$idName = strtolower($value['nom']);
+			$idName = str_replace(' ', '', $idName);
+			$idName = iconv('UTF-8', 'ASCII//TRANSLIT', $idName);
+			//Affichage des blocs de produits présents en base de donnée ainsi que l'ajout d'une selection et d'un bouton pour commander
+			echo '<div id="' . $idName . '" class="' . $cat . 'P"><h2>' . $value['nom'] . '</h2><p>' . $value['description'] . '</p><p>Prix: ' . $value['prix'] . '€</p><img src="../img/' . $cat .  's/' . $value['image'] . '" alt="' . $value['nom'] . '" title="' . $value['nom'] . '"/><label for="' . $idName . 'Q' . '">Quantité: </label><input type="number" class="prdIn" min="1" max="20" name="quantite" id="' . $idName . 'Q' . '"/></div>';
+		}
+		echo '</div>';
+	}
+
+	//Méthode d'affichage générique du contenu du panier
+	/**
+	*	@param array $basket - tableau listant les produits et quantités du panier
+	*	@return void
+	*/
+	public function showBasket(array $basket)
+	{
+		$prdMgr = new ProductManager(PDOFactory::getDb());
+		echo '<form method="POST" action=""><fieldset><legend>Commande</legend><ul>';
+		foreach ($basket as $key => $val)
+		{
+			$idName = strtolower($key);
+			$idName = str_replace(' ', '', $idName);
+			$idP = $prdMgr->getProductIdFromName(ucfirst($key));
+			$unitPrice = $prdMgr->getProductField($idP, "prix");
+			echo '<li><a href="../webPages/panier.php?del=' . $key . '"><img src="../img/icones/supprimer.png" class="suprIcon" alt="icone de supression" title="supprimer"></a> ' . ucfirst($key) . ' <input type=number class="prdIn" name="' . $key . '" value="' . $val . '" min="1" max="20" id="' . $idName . '"/> <span id="' . $idName . 'S" class="tPrix">' . $unitPrice*$val . '</span>€</li><input type="hidden" id="' . $idName . 'H" value="' . $unitPrice . '"/>'; 
+		}
+		echo '</ul><p>Prix total : <span id="totalCde"></span> €</p><input type="submit" value="Valider"/></fieldset></form>';
+	}
+
+	//Méthode affichant un block (image/lien/description) par catégorie de produits différentes
+	/**
+	*	@param array $types - tableau listant les différents types
+	*	@return void
+	*/
+	public function showTypesBoard(array $types)
+	{
+		$prdMgr = new ProductManager(PDOFactory::getDb());
+		echo '<div id="carteM">';
+		foreach ($types as $key => $value) 
+		{
+			$name = lcfirst($value['nom']);
+			echo '<div id="cartemenu' . $name .'s" class="carteMenuP"><h2><a href="produits.php?cat=' . $name . '">Nos ' . $value['nom'] . 's</a></h2><img src="../img/' . $name . 's/' . $prdMgr->pickRdmImage($value['nom']) . '" alt="image de ' . $name . '" title="Pages des ' . $name . 's"/></div>';
+		}
+		echo '</div>';
 	}
 }

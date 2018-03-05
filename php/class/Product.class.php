@@ -23,7 +23,7 @@ class Product
 
 	/**
 	*	@param void
-	*	@return String $nom
+	*	@return string $nom
 	*/
 	public function getNom()
 	{
@@ -41,7 +41,7 @@ class Product
 
 	/**
 	*	@param void
-	*	@return String $image
+	*	@return string $image
 	*/
 	public function getImage()
 	{
@@ -50,7 +50,7 @@ class Product
 
 	/**
 	*	@param void
-	*	@return String $description
+	*	@return string $description
 	*/
 	public function getDescription()
 	{
@@ -68,7 +68,7 @@ class Product
 
 	//Setters
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_produit($new)
@@ -77,16 +77,16 @@ class Product
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setNom(String $new)
+	public function setNom(string $new)
 	{
 		$this->nom = $new;
 	}
 
 	/**
-	*	@param String|float $new
+	*	@param string|float $new
 	*	@return void
 	*/
 	public function setPrix($new)
@@ -95,25 +95,25 @@ class Product
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setImage(String $new)
+	public function setImage(string $new)
 	{
 		$this->image = $new;
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setDescription(String $new)
+	public function setDescription(string $new)
 	{
 		$this->description = $new;
 	}
 
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_type($new)

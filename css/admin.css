@@ -58,7 +58,7 @@ section
 
 }
 
-div 
+div, #admAuth
 {
     background-color: lightslategray;
     display: flex;

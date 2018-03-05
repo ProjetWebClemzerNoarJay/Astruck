@@ -1,4 +1,8 @@
-<!--Page protégée via un .htacces, visible seulement sur authentification d'admin en bdd et renseigné par le .htacces-->
+<!--Page protégée via formulaire d'identification pour l'administration-->
+<?php 
+if (defined('include')) 
+{
+?>
 <section id="plannings">
 	<h2>Plannings</h2>
 	<div id="planningsListe">
@@ -112,3 +116,10 @@
 		?>
 	</div>
 </section>
+<?php
+}
+else
+{
+	header('Location: admin.php');
+}
+?>

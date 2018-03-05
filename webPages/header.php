@@ -7,10 +7,10 @@
 		<div class="menu" id="accueil"><a href="index.php">Accueil</a></div>
 		<div class="menu" id="carte">
 			<a href="carte.php" id="crte">Carte</a>
-			<a href="menus.php" id="menus">Menus</a>
-			<a href="hamburgers.php" id="hamburgers">Hamburgers</a>
-			<a href="desserts.php" id="desserts">Desserts</a>
-			<a href="boissons.php" id="boissons">Boissons</a>
+			<a href="produits.php?cat=menu" id="menus">Menus</a>
+			<a href="produits.php?cat=hamburger" id="hamburgers">Hamburgers</a>
+			<a href="produits.php?cat=dessert" id="desserts">Desserts</a>
+			<a href="produits.php?cat=boisson" id="boissons">Boissons</a>
 		</div>
 		<div class="menu" id="nousTrouver"><a href="nousTrouver.php">Nous Trouver</a></div>
 		<div class="menu" id="evenements"><a href="evenements.php">Evenements</a></div>
@@ -18,11 +18,12 @@
 			<?php
 				if (isset($_SESSION['id']))
 				{
-					echo '<a href="?logout=1"><img src="../img/icones/logout2.png" id="logout" title="Se deconnecter" alt="logo de flèche arrire"/></a>';
+					echo '<a href="?logout=1"><img src="../img/icones/logout2.png" id="logout" title="Se deconnecter" alt="logo de flèche arriere"/></a>';
 				}
 				else
 				{
 					echo '<a href="login.php"><img src="../img/icones/login2.png" id="login" title="Me connecter" alt="logo de connexion"/></a>';
+					echo '<a href="signin.php"><img src="../img/icones/signin2.png" id="signin" title="M\'inscrire" alt="logo d\'inscription"/></a>';
 				}
 				if (isset($_GET["logout"]) && $_GET["logout"] == 1)
 				{
@@ -30,8 +31,8 @@
 					header("Location: login.php");
 				}
 			?>
-			<a href="signin.php"><img src="../img/icones/signin2.png" id="signin" title="M'inscrire" alt="logo d'inscription"/></a>
-			<a href="cart.php"><img src="../img/icones/cart2.png" id="cart" title="Ma commande" alt="logo de pannier d'achats"/></a>
+			
+			<a href="panier.php"><img src="../img/icones/cart2.png" id="cart" title="Ma commande" alt="logo de pannier d'achats"/></a>
 		</div>
 	</nav>
 	<div id="social">

@@ -20,7 +20,7 @@ if ($_POST["form"] == "add")
 			$plg = new Planning($_POST);
 			if ($planningManager->addPlanning($plg))
 			{
-				$arch->log($plg, $_SESSION["id"]);
+				$arch->log($plg, $_SESSION["idA"]);
 				$success = true;
 			}
 			break;
@@ -28,7 +28,7 @@ if ($_POST["form"] == "add")
 			$type = new Type($_POST);
 			if ($typeManager->addType($type))
 			{
-				$arch->log($type, $_SESSION["id"]);
+				$arch->log($type, $_SESSION["idA"]);
 				$success = true;
 			}
 			break;
@@ -36,7 +36,7 @@ if ($_POST["form"] == "add")
 			$prd = new Product($_POST);
 			if ($productManager->addProduct($prd))
 			{
-				$arch->log($prd, $_SESSION["id"]);
+				$arch->log($prd, $_SESSION["idA"]);
 				$success = true;
 			}
 			break;
@@ -48,7 +48,7 @@ if ($_POST["form"] == "add")
 			{
 				if ($userManager->addUser($usr))
 				{
-					$arch->log($usr, $_SESSION["id"]);
+					$arch->log($usr, $_SESSION["idA"]);
 					$success = true;
 				}
 				if ($_POST["admin"] == "on")
@@ -120,7 +120,7 @@ else if ($_POST["form"] == "setup")
 					$success = true;
 				}
 			}
-			$arch->log($planningManager->loadPlanning($id), $_SESSION["id"]);
+			$arch->log($planningManager->loadPlanning($id), $_SESSION["idA"]);
 			break;
 		case "TypeManager":
 			foreach ($_POST as $key => $value)
@@ -130,7 +130,7 @@ else if ($_POST["form"] == "setup")
 					$success = true;
 				}
 			}
-			$arch->log($typeManager->loadType($id), $_SESSION["id"]);
+			$arch->log($typeManager->loadType($id), $_SESSION["idA"]);
 			break;
 		case "ProductManager":
 			foreach ($_POST as $key => $value)
@@ -141,7 +141,7 @@ else if ($_POST["form"] == "setup")
 				}
 
 			}
-			$arch->log($productManager->loadProduct($id), $_SESSION["id"]);
+			$arch->log($productManager->loadProduct($id), $_SESSION["idA"]);
 			break;
 		case "UserManager":
 		$usr = new User($_POST);
@@ -168,7 +168,7 @@ else if ($_POST["form"] == "setup")
 						$success = true;
 					}
 				}
-				$arch->log($userManager->loadUser($id), $_SESSION["id"]);
+				$arch->log($userManager->loadUser($id), $_SESSION["idA"]);
 				if (isset($_POST["admin"]) && !$userManager->isAdmin($id))
 				{
 					$a = new Admin($admMgr->getHydrateTabFromArg($id));

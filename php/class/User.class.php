@@ -23,7 +23,7 @@ class User
 
 	/**
 	*	@param void
-	*	@return String $nom
+	*	@return string $nom
 	*/
 	public function getNom()
 	{
@@ -32,7 +32,7 @@ class User
 
 	/**
 	*	@param void
-	*	@return String $prenom
+	*	@return string $prenom
 	*/
 	public function getPrenom()
 	{
@@ -41,7 +41,7 @@ class User
 
 	/**
 	*	@param void
-	*	@return String $email
+	*	@return string $email
 	*/
 	public function getEmail()
 	{
@@ -50,7 +50,7 @@ class User
 
 	/**
 	*	@param void
-	*	@return String $mdp
+	*	@return string $mdp
 	*/
 	public function getMdp()
 	{
@@ -59,7 +59,7 @@ class User
 
 	/**
 	*	@param void
-	*	@return String $tel
+	*	@return string $tel
 	*/
 	public function getTel()
 	{
@@ -68,7 +68,7 @@ class User
 
 	//Setters
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_user($new)
@@ -77,46 +77,46 @@ class User
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setNom(String $new)
+	public function setNom(string $new)
 	{
 		$this->nom = $new;
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setPrenom(String $new)
+	public function setPrenom(string $new)
 	{
 		$this->prenom = $new;
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setEmail(String $new)
+	public function setEmail(string $new)
 	{
 		$this->email = $new;
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setMdp(String $new)
+	public function setMdp(string $new)
 	{
 		$this->mdp = $new;
 	}
 
 	/**
-	*	@param String $new
+	*	@param string $new
 	*	@return void
 	*/
-	public function setTel(String $new)
+	public function setTel(string $new)
 	{
 		$this->tel = $new;
 	}

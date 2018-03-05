@@ -227,10 +227,11 @@ header
 {
 	font-family: caviarB, verdana;
 	font-weight: bold;
-	font-size: 6em;
+	font-size: 9em;
 	letter-spacing: 40px;
 	position: relative;
-		top: 55px;
+		top: 40px;
+	color: white;
 }
 
 #banniere
@@ -374,7 +375,7 @@ section img
 }
 
 /* redimensionne que les boissons*/
-.burger img
+.hamburgerP img
 {
 	margin-top: 20px; /*rajout marge entre image et texte*/
 }
@@ -384,7 +385,7 @@ section img
 	margin-top: 70px; /*rajout marge entre image et texte*/
 }
 
-.boisson img
+.boissonP img
 {
 	width: 100px;
 	margin-top: 20px;
@@ -394,14 +395,23 @@ section img
 */
 #kinder img, #snickers img, #twix img
 {
-	width: 70%;
-	height: 60%;
+	width: 50%;
+	height: 40%;
 	margin-top: 20px;
 }
 
-#muffin img, #brownie img, #fruits img, #potdeglace img
+#brownie img, #fruits img, #potdeglace img
 {
  	margin-top: 20px;
+ 	width: 40%;
+ 	height: 50%;
+}
+
+#muffin img
+{
+	margin-top: 20px;
+	width: 25%;
+	height: 40%;
 }
 
 #potdeglace img
@@ -417,10 +427,10 @@ autres */
 	height: 200px;
 }
 
-#bCoca
+
+#breizh-cola img
 {
-	width: 70px;
-	height: 200px;
+	width: 80px;
 }
 
 #glace
@@ -429,19 +439,13 @@ autres */
 	height: 200px;
 }
 
-#chocolat ,#The
+#chocolatchaud img, #the img
 {
  	width: 160px;
 }
 
-.cartemenu
-{
- 	flex-direction: row;
- 	justify-content: space-between;
-}
-
 /*Propriétés des pages de produits*/
-#listemenu, #carteM, #hamburgersP, #dessertsP, #boissonsP
+#menusP, #carteM, #hamburgersP, #dessertsP, #boissonsP
 {
  	display: flex;
  	justify-content: space-around;
@@ -451,12 +455,12 @@ autres */
  	margin-top: -150px;
 }
 
-#menu3 img, #menu4 img
+#menuoriginal img, #menumini img
 {
- 	height: 150px;
+ 	height: 130px;
 }
 
-.menuP, .carteMenu, .burger, .dessert, .boisson
+.menuP, .hamburgerP, .dessertP, .boissonP, .carteMenuP
 {
  	width: 650px;
  	padding: 1%;
@@ -466,11 +470,16 @@ autres */
  	flex-direction: column;
  	justify-content: center;
  	align-items: center;
- 	background: #42464D;
+ 	background-color: #42464D;
  	font-size: 20px; /*taille du texte*/
  	color: white; /*couleur du texte*/
  	border: 1px solid black;
  	border-radius: 0px 60px 0px 60px;
+}
+
+.dessertP
+{
+	min-height: 350px;
 }
 
 /* couleur du lien en blanc et soulignement lors passage de la souris */
@@ -534,12 +543,40 @@ form
 input
 {
 	width: 100px;
+	margin: 10px;
 	
+}
+
+.prdIn
+{
+	width: 40px;
 }
 
 #errorBlock
 {
 	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 25px;
+	color: red;
+}
+
+#basketArea
+{
+	visibility: hidden;
+}
+
+.suprIcon
+{
+	width: 15px;
+	height: 15px;
+	margin-left: 10px;
+	margin-right: 20px;
+}
+
+.infoCde
+{
+	text-align: center;
+	margin: 15px;
 }
 
 @media all and (max-device-width: 800px)

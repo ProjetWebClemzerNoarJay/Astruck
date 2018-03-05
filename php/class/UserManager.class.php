@@ -40,10 +40,10 @@ class UserManager extends Manager
 	//Méthode de suppression d'un utilisateur dans notre bdd
 	/**
 	*	@param int $id|null - id de l'user à supprimer en bdd
-	*	@param String $nom|null - nom de l'user à supprimer en bdd
+	*	@param string $nom|null - nom de l'user à supprimer en bdd
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function delUser(int $id = null, String $email = null)
+	public function delUser(int $id = null, string $email = null)
 	{
 		if (isset($id))
 		{
@@ -81,10 +81,10 @@ class UserManager extends Manager
 	//Méthode de modification d'un champ d'utilisateur en bdd
 	/**
 	*	@param int $id - id de l'utilisateur à modifier en bdd (1ere partie clé primaire)
-	*	@param String $champ - nom du champ à modifier en bdd
+	*	@param string $champ - nom du champ à modifier en bdd
 	*	@return int 1|0 - 1 si la requete s'est correctement executee sinon 0
 	*/
-	public function setUserField($id, String $champ, $new)
+	public function setUserField($id, string $champ, $new)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -108,10 +108,10 @@ class UserManager extends Manager
 	//Fonctions d'acces aux champs (individuel) d'utilisateur en base de donnée
 	/**
 	*	@param int $id - id de l'utilisateur à accéder en bdd
-	*	@param String $champ - nom de l'utilisateur à accéder en bdd
+	*	@param string $champ - nom de l'utilisateur à accéder en bdd
 	*	@return int|array 0|$answ[0] - tableau contenant le resultat de la requette si la requete s'est correctement executee sinon 0
 	*/
-	public function getUserField($id, String $champ)
+	public function getUserField($id, string $champ)
 	{
 		if (in_array($champ, self::$CHAMPS))
 		{
@@ -138,10 +138,10 @@ class UserManager extends Manager
 	//Méthode de chargement d'un utilisateur via id ou email (unique)
 	/**
 	*	@param int $id|null - id de l'utilisateur à accéder en bdd
-	*	@param String $email|null - email de l'utilisateur à accéder en bdd
+	*	@param string $email|null - email de l'utilisateur à accéder en bdd
 	*	@return int|Type 0| - objet User initialisé avec le resultat de la requette si la requete s'est correctement executee sinon 0
 	*/
-	public function loadUser(int $id = null, String $email = null)
+	public function loadUser(int $id = null, string $email = null)
 	{
 		if (isset($id))
 		{
@@ -219,10 +219,10 @@ class UserManager extends Manager
 	//Méthode de vérification si un user est admin ou non
 	/**
 	*	@param int $id|null - id de l'utilisateur concerné
-	*	@param String $email|null - email de l'utilisateur concerné
+	*	@param string $email|null - email de l'utilisateur concerné
 	*	@return int 0|1 - si l'utilisateur est admin 1 sinon 0
 	*/
-	public function isAdmin($id = null, String  $email = null)
+	public function isAdmin($id = null, string  $email = null)
 	{
 		if (isset($id))
 		{
@@ -263,11 +263,11 @@ class UserManager extends Manager
 
 	//Méthode de salage et de hashage des mots de passe utilisateurs (jamais stockées en clair pour la sécurité)
 	/**
-	*	@param String $mdp|null - mot de passe à crypter
+	*	@param string $mdp|null - mot de passe à crypter
 	*	@param User $user|null - utilisateur dont on veut crypter le mot de passe
-	*	@return String|int - mot de passe crypté ou 0 si aucun paramètre n'est passé
+	*	@return string|int - mot de passe crypté ou 0 si aucun paramètre n'est passé
 	*/
-	public function saltAndCrypt(String $mdp = null, User $user = null)
+	public function saltAndCrypt(string $mdp = null, User $user = null)
 	{
 		if (!isset($mdp) && !isset($user))
 		{
@@ -296,6 +296,7 @@ class UserManager extends Manager
 			$req->bindValue(":m", $this->saltAndCrypt($ids["mdp"]));
 			$req->execute();
 			$data = $req->fetch(PDO::FETCH_ASSOC);
+			$req->closeCursor();
 		}
 		catch (PDOException $e)
 		{
@@ -326,11 +327,11 @@ class UserManager extends Manager
 		}
 		if (!preg_match("#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,})$#", $usr->getMdp()))
 		{
-			$eMsg.= "Le champ mot de passe est invalide (Au moins 1 majuscule / 1 chiffre / caractère spécial : \"-_+@\" / 8 caractères mini). ";
+			$eMsg.= "Le champ mot de passe est invalide (Au moins 1 majuscule / 1 chiffre / caractère spécial : \"-_+@%$@!\" / 8 caractères mini). ";
 		}
-		if (!preg_match("#^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$#", $usr->getEmail()))
+		if (!preg_match("#^[^\W][.a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$#", $usr->getEmail()))
 		{
-			$eMsg .= "Le champ email est invaide. ";
+			$eMsg .= "Le champ email est invalide. ";
 		}
 		if (!preg_match("#^0[1-9]\d{8}$#", $usr->getTel()))
 		{
@@ -349,10 +350,10 @@ class UserManager extends Manager
 	//Idem au dessus mais pour 1 seul champ
 	/**
 	*	@param User $usr - utilisateur à checker
-	*	@param String $field - le champ à checker
+	*	@param string $field - le champ à checker
 	*	@return int|array 0|$eMsg - tableau contenant la concaténation des messages d'erreur s'il y en a sinon 0
 	*/
-	public function validateUserField(User $usr, String $field)
+	public function validateUserField(User $usr, string $field)
 	{
 		$eMsg = "";
 		switch ($field)

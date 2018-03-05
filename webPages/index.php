@@ -22,8 +22,8 @@
 		<article id="presentations">
 			<h1>Qui sommes nous ?</h1>
 			<video src="../video/#" controls autoload>Merci de mettre votre navigateur à jour.</video>
-			<p>Anne-Sophie et nicolas sont un jeune couple avec 5 enfants, qui ont décidé de se lancer dans un projet de foodtruck spécialisé dans les hamburgers, Astruck vit le jour.<br/>
-			Nous vous proposons nos délicieuses spécialités (hamburguers/boissons/desserts) à l'unité ou en menu,disponibles dans tout l'Ille et Vilaine (voir rubrique "Nous Trouver").
+			<p>Anne-Sophie et Nicolas sont un jeune couple avec 5 enfants, qui ont décidé de se lancer dans un projet de foodtruck spécialisé dans les hamburgers, Astruck vit le jour.<br/>
+			Nous vous proposons nos délicieuses spécialités (hamburgers/boissons/desserts) à l'unité ou en menu,disponibles dans tout l'Ille et Vilaine (voir rubrique "Nous Trouver").
 			</p>
 		</article>
 	</section>

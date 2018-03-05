@@ -9,15 +9,16 @@ class Archiver extends Manager
 	//Méthode d'archivage d'une commande (objet full order contenant les détails de la commande) pouvant être utile pour retracer des soucis de commandes, ou établir des stats de vente à l'avenir (prds les plus vendus / en fonction des périodes...)
 	/**
 	*	@param FullOrder $ord - objet a serialiser et a archiver
+	*	@param int|string $idAdm - id de l'admin ayant archive la commande
 	*	@return int 0|1 - 1 si success sinon 0
 	*/
-	public function archiveOrder(FullOrder $ord, int $idAdm)
+	public function archiveOrder(FullOrder $ord, $idAdm)
 	{
 		try
 		{
 			$req = $this->db->prepare("INSERT INTO archive_commande VALUES(NOW(), :o, :ia, :ic)");
 			$req->bindValue(":o", serialize($ord));
-			$req->bindValue(":ia", $idAdm);
+			$req->bindValue(":ia", (int) $idAdm);
 			$req->bindValue(":ic", $ord->getId_commande());
 			$req->execute();
 		}
@@ -130,17 +131,17 @@ class Archiver extends Manager
 
 	//Methode permettant de supprimer un log (par exemple en cas de retrait d'admin, les logs de cet admin seront d'abord supprimés pour que la contrainte de clef étrangère ne dérange pas la suppression)
 	/**
-	*	@param String $logType - suffixe de la table de gestion concernee
-	*	@param int $idAdm - id de l'admin dont on veut supprimer les logs
+	*	@param string $logType - suffixe de la table de gestion concernee
+	*	@param int|string $idAdm - id de l'admin dont on veut supprimer les logs
 	*	@return int 0|1 - 1 si success sinon 0
 	*/
-	public function delLog(String $logType, $idAdm)
+	public function delLog(string $logType, $idAdm)
 	{
 		$name = "gestion_" . $logType;
 		try
 		{
 			$req = $this->db->prepare("DELETE FROM " . $name . " WHERE id_admin = :i");
-			$req->bindValue(":i", $idAdm);
+			$req->bindValue(":i", (int) $idAdm);
 			$req->execute();
 			$req->closeCursor();
 		}
@@ -172,13 +173,13 @@ class Archiver extends Manager
 		return 1;
 	}
 
-	//Méthode de supression des logs en fonction du parametre String passé, supprime en fonction de l'id de l'item de la table en question
+	//Méthode de supression des logs en fonction du parametre string passé, supprime en fonction de l'id de l'item de la table en question
 	/**
-	*	@param String $log - nom de l'objet que l'on souhaite supprimer (associé à la table)
+	*	@param string $log - nom de l'objet que l'on souhaite supprimer (associé à la table)
 	*	@param int $id - id de l'objet dont on veut supprimer le log
 	*	@return int 0|1 - 1 si success sinon 0
 	*/
-	public function delLogsCat(String $log, int $id)
+	public function delLogsCat(string $log, int $id)
 	{
 		$name = "gestion_" . $log;
 		$crit = "id_" . $log;
@@ -199,7 +200,7 @@ class Archiver extends Manager
 
 	//Methode de suppression de tous les logs associées a un admin (pour la suppression) attention, les commandes validées par cet admin devront être revalidées par un autre admin.
 	/**
-	*	@param int $idAdm - id de l'admin dont on veut supprimer les logs de toutes les tables de gestion
+	*	@param int|string $idAdm - id de l'admin dont on veut supprimer les logs de toutes les tables de gestion
 	*	@return int 0|1 - 1 si success sinon 0
 	*/
 	public function delLogs($idAdm)
@@ -209,7 +210,7 @@ class Archiver extends Manager
 			try
 			{
 				$req = $this->db->prepare("DELETE FROM " . $value . " WHERE id_admin = :i");
-				$req->bindValue(":i", $idAdm);
+				$req->bindValue(":i", (int) $idAdm);
 				$req->execute();
 				$req->closeCursor();
 			}

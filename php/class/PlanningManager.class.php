@@ -153,6 +153,7 @@ class PlanningManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM planning LIMIT 0, " . $nb);
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{
@@ -165,6 +166,7 @@ class PlanningManager extends Manager
 			{
 				$req = $this->db->query("SELECT * FROM planning");
 				$data = $req->fetchAll(PDO::FETCH_ASSOC);
+				$req->closeCursor();
 			}
 			catch (PDOException $e)
 			{

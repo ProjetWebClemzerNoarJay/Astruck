@@ -28,7 +28,7 @@ class Admin
 
 	//Setters
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_admin($new)
@@ -37,7 +37,7 @@ class Admin
 	}
 
 	/**
-	*	@param String|int $new
+	*	@param string|int $new
 	*	@return void
 	*/
 	public function setId_user($new)

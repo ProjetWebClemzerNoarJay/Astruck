@@ -2,8 +2,9 @@
 	session_start();
 	//Vérification si la variable de session est bien définie et valide, si elle ne l'est pas, redirection immédiate vers la page index
 	include "../php/init.php";
-	//Définition d'un mot de passe superAdmin permettant d'acceder à la seconde partie de l'interface d'administration affiché crypté pour plus de sécurité
-	$passwd = "281c9d348b1dd60bf07e326bd6f4db43cd4c3df189ba3dab8d1ac4b9e8b26c1d";
+	define('include', NULL);
+	//Définition d'un mot de passe superAdmin permettant d'acceder à la seconde partie de l'interface d'administration affiché crypté pour plus de sécurité (mdp : root)
+	$passwd = "395e2b3e7156653f56364e58629fc9e745291c1e7e6a478540996ddfedabfe52";
 
 	//Gestion des evenements supression sur la page d'index
 	if (isset($_GET["del"]) && isset($_GET["cat"]))
@@ -13,25 +14,30 @@
 		switch ($_GET["cat"])
 		{
 			case "commande":
-				if ($orderManager->delOrder($id))
+				if ($purchaseManager->delPurchase($id))
 				{
+					$orderManager->delOrder($id);
 					$success = true;
 				}
+				break;
 			case "planning":
-				if ($planningManager->delPlanning($id))
+				if ($arch->delLog($_GET["cat"], $_SESSION["idA"]))
 				{
+					$planningManager->delPlanning($id);
 					$success = true;
 				}
 				break;
 			case "type":
-				if ($typeManager->delType($id))
+				if ($arch->delLog($_GET["cat"], $_SESSION["idA"]))
 				{
+					$typeManager->delType($id);
 					$success = true;
 				}
 				break;
 			case "produit":
-				if ($productManager->delProduct($id))
+				if ($arch->delLog($_GET["cat"], $_SESSION["idA"]))
 				{
+					$productManager->delProduct($id);
 					$success = true;
 				}
 				break;
@@ -60,7 +66,7 @@
 		}
 	}
 	//Sécurisation de la page en cas d'utilisateur non authentifié en tant qu'admin => redirection sur la page index
-	if (!$_SESSION["auth"] || $_SESSION["auth"] != $userManager->getUserField($_SESSION["id"], "mdp"))
+	if (!isset($_SESSION["auth"]) || $_SESSION["auth"] != $userManager->getUserField($_SESSION["id"], "mdp"))
 	{
 		header("Location: ../webPages/index.php");
 	}
@@ -105,13 +111,13 @@
 			}
 			if (isset($_GET["validate"]))
 			{
-				if ($arch->archiveOrder(new FullOrder($_GET["validate"], $db), $_SESSION["id"]))
+				if ($arch->archiveOrder(new FullOrder($_GET["validate"], $db), $_SESSION["idA"]))
 				{
 					header("Location: admin.php?validated=1");
 				}
 				else
 				{
-					header("Location: admin.php?errorValidate=1");
+					echo '<META HTTP-EQUIV="refresh" CONTENT="0; URL=admin.php?errorValidate=1"/>';
 				}
 			}
 			if (isset($_GET["setup"]) && $_GET["cat"] == $cat)
