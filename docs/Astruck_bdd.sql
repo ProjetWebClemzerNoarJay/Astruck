@@ -6,8 +6,8 @@
 -- Généré le :  Dim 04 mars 2018 à 22:05
 -- Version du serveur :  10.1.26-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.27-0+deb9u1
-CREATE DATABASE Astruck;
-USE Astruck;
+CREATE DATABASE astruck;
+USE astruck;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
